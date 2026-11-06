@@ -1,27 +1,34 @@
 /*
-  Cores e fontes do site, tiradas do quadro "Identidade visual" do Figma.
+  Cores e fontes do site: a "paleta suave" aprovada na página do sabor do Figma
+  (mesmas cores da marca, mais neutras e um pouco mais escuras).
+  No Figma elas são a coleção de variáveis "Tatá • Paleta suave".
   Para mudar uma cor no site inteiro, troque só o valor aqui.
 */
 :root {
-  /* Paleta da marca */
-  --amarelo: #ffe347; /* Amarelo Tatá: fundo do logo */
-  --amarelo-ouro: #ffb81c; /* Amarelo Ouro: fundos dos posts */
-  --laranja: #f59b14; /* Laranja: degradês */
-  --rosa: #e8457c; /* Rosa Tatá: letras do logo */
-  --rosa-escuro: #c2185b; /* Rosa Escuro: destaques */
-  --rosa-claro: #fde7ec; /* Rosa Claro: fundos suaves */
-  --vinho: #a3161c; /* Vinho: títulos e embalagem */
-  --vinho-escuro: #6e0e14; /* Vinho Escuro: rodapé */
-  --creme: #fff9ef; /* Creme: fundo do site */
-  --verde-zap: #25d366; /* Verde WhatsApp: botões de pedido */
+  /* Paleta suave (nomes iguais aos do Figma) */
+  --fundo: #f7f2eb; /* fundo geral das páginas */
+  --areia: #efe5d8; /* painéis, caixas de destaque */
+  --branco: #fffdf9; /* header, cards, texto em botão colorido */
+  --linha: #e4d8ca; /* bordas e divisórias */
+  --vinho: #7a2e37; /* títulos, links, menu ativo */
+  --vinho-escuro: #4b1d23; /* nome da marca, rodapé */
+  --rosa: #b45a6a; /* detalhes: letra cursiva, marcadores, ícones */
+  --rosa-claro: #f2e2e0; /* fundo de selos */
+  --mostarda: #ddb55a; /* selos e destaques amarelos */
+  --mostarda-claro: #f4e9c9; /* fundo da etiqueta de preço */
+  --texto: #3a2a2c;
+  --texto-suave: #76666a;
+  --verde-zap: #23864f; /* botões do WhatsApp */
+  --ifood: #b8343a;
+  --n99food: #e9c24a;
 
   /* Tons de apoio (variações das cores acima) */
-  --rosa-bem-claro: #fff2f5;
-  --amarelo-claro: #fff3c4;
-  --verde-zap-escuro: #1ebe5a;
-  --branco: #ffffff;
-  --texto: #3b1b20;
-  --texto-suave: #7a5a5f;
+  --rosa-escuro: #8e3f4e; /* hover e destaques um pouco mais fortes que o rosa */
+  --rosa-bem-claro: #f8efec;
+  --verde-zap-escuro: #1c6e41;
+  --amarelo: var(--mostarda); /* nome antigo, usado no logo e no rodapé */
+  --amarelo-ouro: #c99a3e;
+  --creme: var(--fundo);
 
   /* Tipografia */
   --fonte-titulo: "Fraunces", Georgia, serif; /* Títulos */
@@ -31,7 +38,7 @@
   --largura-conteudo: 1200px;
   --margem-lateral: 24px;
   --raio: 20px;
-  --sombra: 0 18px 40px -18px rgba(59, 35, 32, 0.35);
+  --sombra: 0 18px 40px -18px rgba(75, 29, 35, 0.3);
 }
 
 *,
@@ -46,7 +53,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--branco);
+  background: var(--fundo);
   color: var(--texto);
   font-family: var(--fonte-texto);
   font-size: 16px;
@@ -61,7 +68,7 @@ h3 {
   font-family: var(--fonte-titulo);
   font-optical-sizing: auto;
   line-height: 1.1;
-  color: var(--vinho);
+  color: var(--vinho-escuro);
   margin: 0;
 }
 

@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
-// Fontes da identidade visual: Fraunces (títulos), Dancing Script (detalhes), Poppins (textos)
+// Fontes da identidade visual: Fraunces (títulos; 900 = Black, usado no nome da marca),
+// Dancing Script (detalhes), Poppins (textos)
 import "@fontsource/fraunces/700.css";
 import "@fontsource/fraunces/800.css";
+import "@fontsource/fraunces/900.css";
 import "@fontsource/dancing-script/600.css";
 import "@fontsource/dancing-script/700.css";
 import "@fontsource/poppins/400.css";
@@ -31,7 +33,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#a3161c",
+  themeColor: "#7a2e37",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
