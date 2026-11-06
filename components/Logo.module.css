@@ -1,0 +1,34 @@
+/* O tamanho pode ser trocado pelo pai com a variável --logo-tamanho. */
+.logo {
+  --tamanho: var(--logo-tamanho, var(--tamanho-padrao));
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--tamanho);
+  height: var(--tamanho);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff9b0, var(--amarelo) 65%);
+  border: calc(var(--tamanho) * 0.04) solid var(--branco);
+  box-shadow: 0 6px 16px -6px rgba(110, 14, 20, 0.45);
+  color: var(--rosa);
+  font-family: var(--fonte-script);
+  font-weight: 700;
+  line-height: 0.95;
+  text-align: center;
+}
+
+.linha1 {
+  font-size: calc(var(--tamanho) * 0.15);
+}
+.linha2 {
+  font-size: calc(var(--tamanho) * 0.25);
+}
+.linha3 {
+  margin-top: 0.15em;
+  font-family: var(--fonte-texto);
+  font-weight: 600;
+  font-size: calc(var(--tamanho) * 0.08);
+  color: var(--vinho);
+}

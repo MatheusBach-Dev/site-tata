@@ -1,0 +1,96 @@
+.rodape {
+  background: var(--vinho-escuro);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 14px;
+}
+
+.colunas {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr 1.3fr 1fr;
+  gap: 40px;
+  padding-top: 64px;
+  padding-bottom: 36px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.nome {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.nome strong {
+  font-family: var(--fonte-titulo);
+  font-size: 21px;
+  color: var(--branco);
+}
+.nome span {
+  font-family: var(--fonte-script);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--amarelo);
+}
+
+.marca p {
+  max-width: 330px;
+}
+
+.coluna {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.coluna h3 {
+  font-family: var(--fonte-texto);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--amarelo);
+}
+.coluna a:hover {
+  color: var(--branco);
+}
+
+.comIcone {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.comIcone svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--amarelo);
+}
+
+.creditos {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding-top: 28px;
+  padding-bottom: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 900px) {
+  .colunas {
+    grid-template-columns: 1fr 1fr;
+  }
+  .marca {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .colunas {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 48px;
+  }
+}

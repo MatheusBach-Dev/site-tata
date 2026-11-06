@@ -1,0 +1,78 @@
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 0 28px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-family: var(--fonte-texto);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1;
+  white-space: nowrap;
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.botao:hover {
+  transform: translateY(-2px);
+}
+
+.primario {
+  background: var(--rosa);
+  color: var(--branco);
+  box-shadow: 0 10px 24px -10px rgba(232, 70, 124, 0.8);
+}
+.primario:hover {
+  background: var(--rosa-escuro);
+}
+
+.secundario {
+  background: var(--branco);
+  color: var(--vinho);
+  border-color: var(--rosa-claro);
+}
+.secundario:hover {
+  border-color: var(--rosa);
+  color: var(--rosa-escuro);
+}
+
+.branco {
+  background: var(--branco);
+  color: var(--rosa-escuro);
+  box-shadow: 0 10px 24px -12px rgba(110, 14, 20, 0.5);
+}
+
+.contorno {
+  background: transparent;
+  color: var(--vinho);
+  border-color: var(--vinho);
+}
+.contorno:hover {
+  background: rgba(163, 22, 28, 0.08);
+}
+
+.zap {
+  background: var(--verde-zap);
+  color: var(--branco);
+}
+.zap:hover {
+  background: var(--verde-zap-escuro);
+}
+
+.pequeno {
+  min-height: 42px;
+  padding: 0 20px;
+  font-size: 15px;
+}
+
+.grande {
+  min-height: 63px;
+  padding: 0 32px;
+  font-size: 17px;
+}
+
+.cheio {
+  width: 100%;
+}

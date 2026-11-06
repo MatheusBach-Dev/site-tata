@@ -1,0 +1,31 @@
+.foto {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.75), transparent 45%),
+    var(--cor-sabor, var(--rosa-claro));
+}
+
+.foto img {
+  object-fit: cover;
+}
+
+.desenho {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(59, 35, 32, 0.28);
+}
+
+.desenho svg {
+  width: 38%;
+  height: 38%;
+  stroke-width: 1.4;
+}
+
+/* Sabor esgotado: foto apagada e sem cor. */
+.esgotado {
+  filter: grayscale(1);
+  opacity: 0.55;
+}

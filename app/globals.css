@@ -1,0 +1,118 @@
+/*
+  Cores e fontes do site, tiradas do quadro "Identidade visual" do Figma.
+  Para mudar uma cor no site inteiro, troque só o valor aqui.
+*/
+:root {
+  /* Paleta da marca */
+  --amarelo: #ffe347; /* Amarelo Tatá: fundo do logo */
+  --amarelo-ouro: #ffb81c; /* Amarelo Ouro: fundos dos posts */
+  --laranja: #f59b14; /* Laranja: degradês */
+  --rosa: #e8457c; /* Rosa Tatá: letras do logo */
+  --rosa-escuro: #c2185b; /* Rosa Escuro: destaques */
+  --rosa-claro: #fde7ec; /* Rosa Claro: fundos suaves */
+  --vinho: #a3161c; /* Vinho: títulos e embalagem */
+  --vinho-escuro: #6e0e14; /* Vinho Escuro: rodapé */
+  --creme: #fff9ef; /* Creme: fundo do site */
+  --verde-zap: #25d366; /* Verde WhatsApp: botões de pedido */
+
+  /* Tons de apoio (variações das cores acima) */
+  --rosa-bem-claro: #fff2f5;
+  --amarelo-claro: #fff3c4;
+  --verde-zap-escuro: #1ebe5a;
+  --branco: #ffffff;
+  --texto: #3b1b20;
+  --texto-suave: #7a5a5f;
+
+  /* Tipografia */
+  --fonte-titulo: "Fraunces", Georgia, serif; /* Títulos */
+  --fonte-script: "Dancing Script", cursive; /* Detalhes e palavras-chave */
+  --fonte-texto: "Poppins", system-ui, sans-serif; /* Textos */
+
+  --largura-conteudo: 1200px;
+  --margem-lateral: 24px;
+  --raio: 20px;
+  --sombra: 0 18px 40px -18px rgba(59, 35, 32, 0.35);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--branco);
+  color: var(--texto);
+  font-family: var(--fonte-texto);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--fonte-titulo);
+  font-optical-sizing: auto;
+  line-height: 1.1;
+  color: var(--vinho);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+:focus-visible {
+  outline: 3px solid var(--rosa);
+  outline-offset: 3px;
+}
+
+.container {
+  width: 100%;
+  max-width: calc(var(--largura-conteudo) + var(--margem-lateral) * 2);
+  margin: 0 auto;
+  padding: 0 var(--margem-lateral);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

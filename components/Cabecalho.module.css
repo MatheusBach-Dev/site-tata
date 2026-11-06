@@ -1,0 +1,150 @@
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rosa-claro);
+}
+
+.linha {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 94px;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nome {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.nome strong {
+  font-family: var(--fonte-titulo);
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--vinho);
+}
+.nome span {
+  font-family: var(--fonte-script);
+  font-weight: 600;
+  font-size: 19px;
+  color: var(--vinho);
+}
+
+.menu {
+  display: flex;
+  gap: 34px;
+  font-weight: 500;
+  font-size: 16px;
+}
+.menu a {
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.15s ease;
+}
+.menu a:hover,
+.menu .ativo {
+  color: var(--rosa);
+}
+.menu .ativo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--rosa);
+}
+
+.acoes {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.instagram {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--rosa-claro);
+  color: var(--vinho);
+  transition: background-color 0.15s ease;
+}
+.instagram:hover {
+  background: var(--rosa-claro);
+}
+
+.abrirMenu {
+  display: none;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--rosa-bem-claro);
+  color: var(--vinho);
+}
+
+@media (max-width: 1080px) {
+  .menu {
+    gap: 22px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 960px) {
+  .linha {
+    min-height: 76px;
+  }
+  .marca {
+    --logo-tamanho: 52px;
+  }
+  .nome strong {
+    font-size: 20px;
+  }
+  .abrirMenu {
+    display: grid;
+  }
+  .menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 8px var(--margem-lateral) 20px;
+    background: var(--branco);
+    border-bottom: 1px solid var(--rosa-claro);
+    box-shadow: var(--sombra);
+  }
+  .menu a {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rosa-bem-claro);
+  }
+  .menu .ativo::after {
+    display: none;
+  }
+  .menuAberto {
+    display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .instagram,
+  .botaoPedido {
+    display: none;
+  }
+}

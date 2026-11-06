@@ -1,0 +1,37 @@
+.faixa {
+  background: var(--rosa);
+  color: var(--branco);
+  font-size: 13px;
+}
+
+.itens {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 40px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: pre;
+}
+.item svg {
+  color: var(--branco);
+}
+a.item:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 860px) {
+  .endereco {
+    display: none;
+  }
+  .itens {
+    gap: 6px 24px;
+    font-size: 13px;
+  }
+}
