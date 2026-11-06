@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { buscarLinha } from "@/data/linhas";
 import type { SaborComFoto } from "@/lib/fotos";
+import { comBase } from "@/lib/caminho";
 import { IconIceCream } from "./icons";
 import styles from "./FotoSabor.module.css";
 
@@ -23,7 +24,7 @@ export function FotoSabor({
       style={{ "--cor-sabor": buscarLinha(sabor.linha).cor } as React.CSSProperties}
     >
       {sabor.foto ? (
-        <Image src={sabor.foto} alt={sabor.nome} fill sizes={sizes} priority={priority} />
+        <Image src={comBase(sabor.foto)} alt={sabor.nome} fill sizes={sizes} priority={priority} />
       ) : (
         <span className={styles.desenho} role="img" aria-label={sabor.nome}>
           <IconIceCream />
