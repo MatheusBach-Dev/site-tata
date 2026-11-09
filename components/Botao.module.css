@@ -19,6 +19,15 @@
   transform: translateY(-2px);
 }
 
+.botao:disabled {
+  cursor: not-allowed;
+  transform: none;
+  background: #e7e0dc;
+  color: #8b7b7d;
+  border-color: transparent;
+  box-shadow: none;
+}
+
 .primario {
   background: var(--rosa);
   color: var(--branco);

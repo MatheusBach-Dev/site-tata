@@ -1,0 +1,93 @@
+.opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.apps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 64px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 14px;
+  text-align: left;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.opcao:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+}
+
+.icone {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.textos {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.textos strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+.textos small {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.whatsapp {
+  background: var(--verde-zap);
+  color: var(--branco);
+}
+.whatsapp .icone {
+  background: rgba(255, 255, 255, 0.22);
+}
+.whatsapp:disabled {
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+  background: #e7e0dc;
+  color: var(--texto-suave);
+}
+
+.ifood {
+  background: var(--vinho);
+  color: var(--branco);
+}
+.ifood .icone {
+  background: var(--branco);
+  color: var(--vinho);
+}
+
+.noveNove {
+  background: var(--amarelo-ouro);
+  color: var(--texto);
+}
+.noveNove .icone {
+  background: var(--branco);
+  color: var(--texto);
+  font-size: 14px;
+}
+
+@media (max-width: 420px) {
+  .apps {
+    grid-template-columns: 1fr;
+  }
+}

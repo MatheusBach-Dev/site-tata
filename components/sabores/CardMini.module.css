@@ -1,0 +1,55 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--rosa-claro);
+  border-radius: 20px;
+  background: var(--branco);
+  box-shadow: 0 12px 28px -22px rgba(110, 14, 20, 0.45);
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.foto {
+  width: 100%;
+  aspect-ratio: 282 / 220;
+}
+
+.corpo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 14px 16px;
+}
+
+.nome {
+  font-family: var(--fonte-titulo);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--vinho);
+}
+
+.linha {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.preco {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--rosa-escuro);
+}
+
+.seta {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--rosa-claro);
+  color: var(--vinho);
+}

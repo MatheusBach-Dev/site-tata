@@ -19,7 +19,9 @@ Abra http://localhost:3000.
 | O que | Arquivo |
 | --- | --- |
 | Telefone, endereço, horários, Instagram | `data/loja.ts` |
-| Sabores (nome, descrição, foto, esgotado) | `data/sabores.ts` |
+| Sabores (nome, descrição, mais pedido, esgotado) | `data/sabores.ts` |
+| Linhas e preços (Gourmet R$ 9, Casquinha R$ 10, Premium R$ 11, Cremoso R$ 4,50) | `data/linhas.ts` |
+| Links do iFood e do 99Food (botões aparecem quando preenchidos) | `data/loja.ts` |
 | Links do menu | `data/menu.ts` |
 | Mensagens que vão para o WhatsApp | `lib/whatsapp.ts` |
 | Cores e fontes (identidade visual do Figma) | `app/globals.css` (bloco `:root`) e as fontes em `app/layout.tsx` |
@@ -29,16 +31,17 @@ Abra http://localhost:3000.
 
 ## Fotos e logo
 
-- **Fotos dos sabores:** coloque em `public/sabores/` (ex.: `public/sabores/pudim.jpg`)
-  e preencha o campo `foto: "/sabores/pudim.jpg"` do sabor em `data/sabores.ts`.
-  Sem foto, aparece um desenho com a cor do sabor.
+- **Fotos dos sabores:** salve em `public/sabores/` com o `slug` do sabor como nome
+  (ex.: `public/sabores/pudim.jpg`; vale `.jpg`, `.png` ou `.webp`). O site encontra sozinho.
+  Sem foto, aparece um desenho com a cor da linha. Dica: fotos quadradas, ~800 px, até 300 KB.
+- **Mais pedido:** `maisPedido: true` no sabor mostra a etiqueta no card e na página do sabor.
 - **Esgotado:** `esgotado: true` deixa a foto apagada e sem cor.
 - **Logo:** coloque em `public/logo.png` e siga o comentário em `components/Logo.tsx`.
 
 ## Status
 
 - [x] 1. Início (desktop e celular)
-- [ ] 2. Sabores
+- [x] 2. Sabores (lista com filtros por linha + página de cada sabor em `/sabores/<slug>`)
 - [ ] 3. Nossa História
 - [ ] 4. Onde Encontrar
 - [ ] 5. Seja Revendedor

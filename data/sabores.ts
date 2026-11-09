@@ -1,98 +1,129 @@
-// Lista de sabores do site.
+// Cardápio completo da Tatá.
 // Hoje fica aqui no código. Quando o painel admin existir,
 // estes dados passam a vir do banco (Supabase) e as páginas não mudam.
+//
+// Como mexer:
+// - maisPedido: true  → aparece a etiqueta "Mais pedido" no card e na página do sabor
+// - esgotado: true    → foto apagada e sem cor, "Produto esgotado" e botão de pedido desligado
+// - descricao         → frase curta do card (opcional)
+// - sobre             → texto maior da página do sabor (opcional)
+// - Foto: salve em public/sabores/<slug>.jpg (ou .png/.webp). O site encontra sozinho.
 
-export type Categoria = "frutados" | "cremosos" | "classicos";
+import type { LinhaId } from "./linhas";
 
 export type Sabor = {
   slug: string;
   nome: string;
-  descricao: string;
-  peso: string;
-  categoria: Categoria;
-  /** Caminho da foto dentro de /public, ex.: "/sabores/pudim.jpg". Sem foto, aparece um desenho no lugar. */
-  foto?: string;
-  /** Cor de fundo do desenho que aparece enquanto não há foto. */
-  cor: string;
+  linha: LinhaId;
+  descricao?: string;
+  sobre?: string;
+  maisPedido: boolean;
   esgotado: boolean;
-  ordem: number;
 };
 
 export const sabores: Sabor[] = [
+  // ⭐ Chup-chup Gourmet — R$ 9,00
+  { slug: "ninho-com-nutella", nome: "Ninho com Nutella", linha: "gourmet", maisPedido: false, esgotado: false },
   {
-    slug: "romeu-e-julieta",
-    nome: "Romeu e Julieta",
-    descricao: "Goiabada cremosa com queijo: o clássico mineiro geladinho.",
-    peso: "135g",
-    categoria: "classicos",
-    cor: "#F7C6C9",
-    esgotado: false,
-    ordem: 1,
-  },
-  {
-    slug: "maracuja",
-    nome: "Maracujá",
-    descricao: "Mousse de maracujá com calda e sementinhas crocantes.",
-    peso: "135g",
-    categoria: "frutados",
-    cor: "#FFE08A",
-    esgotado: false,
-    ordem: 2,
-  },
-  {
-    slug: "pudim",
-    nome: "Pudim",
-    descricao: "Sabor pudim de leite com calda de caramelo.",
-    peso: "135g",
-    categoria: "cremosos",
-    cor: "#F5D3A6",
-    esgotado: false,
-    ordem: 3,
-  },
-  {
-    slug: "ninho-frutas-vermelhas",
-    nome: "Ninho c/ Frutas Vermelhas",
+    slug: "ninho-com-frutas-vermelhas",
+    nome: "Ninho com Frutas Vermelhas",
+    linha: "gourmet",
     descricao: "Creme de Leite Ninho com geleia de frutas vermelhas.",
-    peso: "135g",
-    categoria: "cremosos",
-    cor: "#F9B9CB",
+    sobre:
+      "Creme de Leite Ninho bem geladinho, com geleia de frutas vermelhas no meio. O docinho do leite com o azedinho das frutas, na medida certa.",
+    maisPedido: false,
     esgotado: false,
-    ordem: 4,
   },
   {
     slug: "amendoim-torrado",
     nome: "Amendoim Torrado",
-    descricao: "Cremoso de amendoim torrado, gostinho de festa junina.",
-    peso: "135g",
-    categoria: "classicos",
-    cor: "#E9C9A0",
+    linha: "gourmet",
+    descricao: "Cremoso de amendoim torrado: gostinho de festa junina o ano todo.",
+    maisPedido: false,
     esgotado: false,
-    ordem: 5,
   },
   {
-    slug: "pacoca-nutella",
-    nome: "Paçoca c/ Nutella",
+    slug: "pacoca-com-nutella",
+    nome: "Paçoca com Nutella",
+    linha: "gourmet",
     descricao: "Paçoca cremosa com recheio generoso de Nutella.",
-    peso: "135g",
-    categoria: "cremosos",
-    cor: "#D9B49A",
+    maisPedido: false,
     esgotado: false,
-    ordem: 6,
   },
+  { slug: "coco-queimado", nome: "Coco Queimado", linha: "gourmet", maisPedido: false, esgotado: false },
+  { slug: "cocada", nome: "Cocada", linha: "gourmet", maisPedido: false, esgotado: false },
   {
     slug: "delicia-de-abacaxi",
     nome: "Delícia de Abacaxi",
-    descricao: "Abacaxi com creme: refrescante e docinho na medida.",
-    peso: "135g",
-    categoria: "frutados",
-    cor: "#FCE7A2",
+    linha: "gourmet",
+    descricao: "Abacaxi com creme: refrescante e docinho na medida certa.",
+    maisPedido: false,
     esgotado: false,
-    ordem: 7,
   },
+  {
+    slug: "pudim",
+    nome: "Pudim",
+    linha: "gourmet",
+    descricao: "Cremoso sabor pudim de leite, com aquela calda de caramelo.",
+    maisPedido: false,
+    esgotado: false,
+  },
+  {
+    slug: "romeu-e-julieta",
+    nome: "Romeu e Julieta",
+    linha: "gourmet",
+    descricao: "Goiabada cremosa com queijo: o clássico mineiro em versão geladinha.",
+    maisPedido: false,
+    esgotado: false,
+  },
+  { slug: "mousse-de-limao", nome: "Mousse de Limão", linha: "gourmet", maisPedido: false, esgotado: false },
+  {
+    slug: "mousse-de-maracuja",
+    nome: "Mousse de Maracujá",
+    linha: "gourmet",
+    descricao: "Mousse de maracujá com calda da fruta e sementinhas crocantes.",
+    maisPedido: false,
+    esgotado: false,
+  },
+  { slug: "acai-com-leite-ninho", nome: "Açaí com Leite Ninho", linha: "gourmet", maisPedido: false, esgotado: false },
+  { slug: "brigadeiro", nome: "Brigadeiro", linha: "gourmet", maisPedido: false, esgotado: false },
+  { slug: "caipirinha", nome: "Caipirinha", linha: "gourmet", maisPedido: false, esgotado: false },
+  { slug: "ninho-com-morango", nome: "Ninho com Morango", linha: "gourmet", maisPedido: false, esgotado: false },
+
+  // 🍫 Chup-chup Gourmet com casquinha de chocolate — R$ 10,00
+  { slug: "prestigio", nome: "Prestígio", linha: "casquinha", maisPedido: false, esgotado: false },
+  { slug: "cafe-com-chocolate", nome: "Café com Chocolate", linha: "casquinha", maisPedido: false, esgotado: false },
+  { slug: "ninho-trufado", nome: "Ninho Trufado", linha: "casquinha", maisPedido: false, esgotado: false },
+
+  // ✨ Linha Premium — R$ 11,00
+  { slug: "torta-de-limao", nome: "Torta de Limão", linha: "premium", maisPedido: false, esgotado: false },
+  {
+    slug: "cheesecake-de-frutas-vermelhas",
+    nome: "Cheesecake de Frutas Vermelhas",
+    linha: "premium",
+    maisPedido: false,
+    esgotado: false,
+  },
+
+  // 🌈 Chup-chup Cremoso — R$ 4,50
+  { slug: "cremoso-chocolate", nome: "Chocolate", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-morango", nome: "Morango", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-menta", nome: "Menta", linha: "cremoso", maisPedido: false, esgotado: false },
+  // esgotado: true só para testar como fica. Troque para false quando quiser.
+  { slug: "cremoso-milho-verde", nome: "Milho Verde", linha: "cremoso", maisPedido: false, esgotado: true },
+  { slug: "cremoso-creme-de-ovos", nome: "Creme de Ovos", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-maracuja", nome: "Maracujá", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-blue-ice", nome: "Blue Ice", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-leite-condensado", nome: "Leite Condensado", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-kiwi", nome: "Kiwi", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-uva", nome: "Uva", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-limao", nome: "Limão", linha: "cremoso", maisPedido: false, esgotado: false },
 ];
 
-export function buscarSabor(slug: string): Sabor {
-  const sabor = sabores.find((s) => s.slug === slug);
-  if (!sabor) throw new Error(`Sabor não encontrado: ${slug}`);
-  return sabor;
+export function buscarSabor(slug: string): Sabor | undefined {
+  return sabores.find((s) => s.slug === slug);
+}
+
+export function saboresDaLinha(linha: LinhaId): Sabor[] {
+  return sabores.filter((s) => s.linha === linha);
 }

@@ -1,4 +1,6 @@
+import { buscarLinha } from "@/data/linhas";
 import { buscarSabor } from "@/data/sabores";
+import { comFoto } from "@/lib/fotos";
 import { mensagens } from "@/lib/whatsapp";
 import { Botao } from "../Botao";
 import { FotoSabor } from "../FotoSabor";
@@ -13,8 +15,9 @@ const numeros = [
 ];
 
 export function Destaque() {
-  const ninho = buscarSabor("ninho-frutas-vermelhas");
-  const pudim = buscarSabor("pudim");
+  const ninho = comFoto(buscarSabor("ninho-com-frutas-vermelhas")!);
+  const pudim = comFoto(buscarSabor("pudim")!);
+  const linhaPudim = buscarLinha(pudim.linha);
 
   return (
     <section className={styles.destaque}>
@@ -76,9 +79,9 @@ export function Destaque() {
             <FotoSabor sabor={pudim} sizes="64px" className={styles.cartaoFoto} />
             <div className={styles.cartaoInfo}>
               <strong>{pudim.nome}</strong>
-              <span>{pudim.peso} de cremosidade</span>
+              <span>{linhaPudim.peso ? `${linhaPudim.peso} de cremosidade` : linhaPudim.nome}</span>
             </div>
-            <BotaoPedidoIcone nome={pudim.nome} detalhe={pudim.descricao} />
+            <BotaoPedidoIcone nome={pudim.nome} linha={linhaPudim.curto} detalhe={pudim.descricao} />
           </div>
 
           <p className={styles.etiqueta}>
@@ -91,10 +94,10 @@ export function Destaque() {
   );
 }
 
-function BotaoPedidoIcone({ nome, detalhe }: { nome: string; detalhe: string }) {
+function BotaoPedidoIcone({ nome, linha, detalhe }: { nome: string; linha: string; detalhe?: string }) {
   return (
     <BotaoPedido
-      mensagem={mensagens.sabor(nome)}
+      mensagem={mensagens.sabor(nome, linha)}
       titulo={nome}
       detalhe={detalhe}
       variante="zap"

@@ -1,0 +1,46 @@
+.faixa {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 56px;
+  padding: 22px 28px;
+  border-radius: 24px;
+  background: var(--rosa-claro);
+}
+
+.icone {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--verde-zap);
+  color: var(--branco);
+}
+
+.texto {
+  flex: 1;
+}
+.texto h2 {
+  font-size: 24px;
+  font-weight: 800;
+}
+.texto p {
+  margin-top: 2px;
+  font-size: 14px;
+  color: var(--texto-suave);
+}
+
+@media (max-width: 640px) {
+  .faixa {
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  .texto h2 {
+    font-size: 20px;
+  }
+  .botao {
+    width: 100%;
+  }
+}

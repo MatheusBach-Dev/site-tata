@@ -1,4 +1,5 @@
 import { buscarSabor } from "@/data/sabores";
+import { comFoto } from "@/lib/fotos";
 import { FotoSabor } from "../FotoSabor";
 import { mensagens } from "@/lib/whatsapp";
 import { BotaoPedido } from "../Pedido";
@@ -12,8 +13,8 @@ const lista = [
 ];
 
 export function TemCarinho() {
-  const romeu = buscarSabor("romeu-e-julieta");
-  const maracuja = buscarSabor("maracuja");
+  const romeu = comFoto(buscarSabor("romeu-e-julieta")!);
+  const maracuja = comFoto(buscarSabor("mousse-de-maracuja")!);
 
   return (
     <section className={styles.secao}>
