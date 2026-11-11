@@ -26,7 +26,7 @@ export const linhas: Linha[] = [
     preco: 9,
     frase: "Muitas emoções em um saquinho só",
     peso: "135g",
-    cor: "#fff3c4",
+    cor: "#f4e9c9",
   },
   {
     id: "casquinha",
@@ -40,7 +40,7 @@ export const linhas: Linha[] = [
     nome: "Linha Premium",
     curto: "Premium",
     preco: 11,
-    cor: "#fde7ec",
+    cor: "#f2e2e0",
   },
   {
     id: "cremoso",
@@ -48,7 +48,7 @@ export const linhas: Linha[] = [
     curto: "Cremoso",
     preco: 4.5,
     frase: "Refrescante, cremoso e gostoso",
-    cor: "#e3f4ee",
+    cor: "#e1ebe3",
   },
 ];
 

@@ -4,12 +4,12 @@
   overflow: hidden;
   border-radius: 22px;
   background: var(--branco);
-  box-shadow: 0 14px 34px -22px rgba(110, 14, 20, 0.45);
+  box-shadow: 0 14px 34px -22px rgba(75, 29, 35, 0.45);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 22px 40px -22px rgba(110, 14, 20, 0.55);
+  box-shadow: 0 22px 40px -22px rgba(75, 29, 35, 0.55);
 }
 
 .fotoLink {

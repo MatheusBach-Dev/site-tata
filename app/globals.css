@@ -28,6 +28,7 @@
   --verde-zap-escuro: #1c6e41;
   --amarelo: var(--mostarda); /* nome antigo, usado no logo e no rodapé */
   --amarelo-ouro: #c99a3e;
+  --amarelo-claro: var(--mostarda-claro);
   --creme: var(--fundo);
 
   /* Tipografia */

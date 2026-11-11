@@ -22,8 +22,8 @@
 .botao:disabled {
   cursor: not-allowed;
   transform: none;
-  background: #e7e0dc;
-  color: #8b7b7d;
+  background: var(--areia);
+  color: var(--texto-suave);
   border-color: transparent;
   box-shadow: none;
 }
