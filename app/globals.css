@@ -69,7 +69,7 @@ h3 {
   font-family: var(--fonte-titulo);
   font-optical-sizing: auto;
   line-height: 1.1;
-  color: var(--vinho-escuro);
+  color: var(--vinho); /* no Figma os títulos da home são vinho */
   margin: 0;
 }
 

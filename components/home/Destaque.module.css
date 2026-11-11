@@ -2,8 +2,8 @@
   position: relative;
   overflow: hidden;
   padding: 56px 0 84px;
-  /* Degradê areia → mostarda (paleta suave): o amarelo da marca, sem ofuscar */
-  background: linear-gradient(90deg, #f6ecd2 0%, var(--mostarda-claro) 30%, #ead08f 72%, #dfb963 100%);
+  /* Degradê amarelo → laranja, medido no Figma (página Início) */
+  background: linear-gradient(90deg, #ffe86c 0%, #ffcd41 50%, #feab1a 100%);
 }
 
 /* Bolhas de decoração do fundo */
@@ -17,21 +17,21 @@
   height: 560px;
   left: -280px;
   top: 560px;
-  background: rgba(255, 255, 255, 0.3);
+  background: #dac558; /* cores das bolhas medidas no Figma */
 }
 .bolha2 {
   width: 340px;
   height: 340px;
   right: -150px;
   top: -140px;
-  background: rgba(255, 255, 255, 0.22);
+  background: #c78717;
 }
 .bolha3 {
   width: 120px;
   height: 120px;
   left: 44%;
   top: 40px;
-  background: rgba(255, 255, 255, 0.32);
+  background: #b2902e;
 }
 
 .grade {
@@ -298,7 +298,7 @@
 @media (max-width: 960px) {
   .destaque {
     padding: 40px 0 64px;
-    background: linear-gradient(170deg, #f6ecd2 0%, var(--mostarda-claro) 35%, #ead08f 80%, #dfb963 100%);
+    background: linear-gradient(170deg, #ffe86c 0%, #ffcd41 50%, #feab1a 100%);
   }
   .grade {
     grid-template-columns: 1fr;
