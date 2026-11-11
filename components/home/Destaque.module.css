@@ -2,8 +2,8 @@
   position: relative;
   overflow: hidden;
   padding: 56px 0 84px;
-  /* Degradê Amarelo Tatá → Amarelo Ouro → Laranja, como no Figma */
-  background: linear-gradient(90deg, #ffe86c 0%, var(--amarelo) 22%, #ffcd41 50%, var(--amarelo-ouro) 78%, #feab1a 100%);
+  /* Degradê areia → mostarda (paleta suave): o amarelo da marca, sem ofuscar */
+  background: linear-gradient(90deg, #f6ecd2 0%, var(--mostarda-claro) 30%, #ead08f 72%, #dfb963 100%);
 }
 
 /* Bolhas de decoração do fundo */
@@ -104,7 +104,7 @@
 }
 .numero {
   padding-right: 26px;
-  border-right: 1.5px solid rgba(163, 22, 28, 0.25);
+  border-right: 1.5px solid rgba(122, 46, 55, 0.25);
 }
 .numero:last-child {
   border-right: 0;
@@ -155,7 +155,7 @@
   aspect-ratio: 1;
   border-radius: 50%;
   border: 10px solid var(--branco);
-  box-shadow: 0 24px 50px -20px rgba(110, 14, 20, 0.45);
+  box-shadow: 0 24px 50px -20px rgba(75, 29, 35, 0.45);
 }
 
 .coracao {
@@ -197,7 +197,7 @@
   justify-content: center;
   border-radius: 50%;
   background: var(--vinho);
-  box-shadow: 0 14px 30px -12px rgba(110, 14, 20, 0.6);
+  box-shadow: 0 14px 30px -12px rgba(75, 29, 35, 0.6);
   color: var(--branco);
   transform: rotate(10deg);
   line-height: 1;
@@ -276,7 +276,7 @@
   padding: 8px 16px;
   border-radius: 999px;
   background: var(--branco);
-  box-shadow: 0 8px 20px -10px rgba(110, 14, 20, 0.4);
+  box-shadow: 0 8px 20px -10px rgba(75, 29, 35, 0.4);
   color: var(--texto);
   font-weight: 600;
   font-size: 13px;
@@ -298,7 +298,7 @@
 @media (max-width: 960px) {
   .destaque {
     padding: 40px 0 64px;
-    background: linear-gradient(170deg, #ffe86c 0%, var(--amarelo) 30%, var(--amarelo-ouro) 80%, #feab1a 100%);
+    background: linear-gradient(170deg, #f6ecd2 0%, var(--mostarda-claro) 35%, #ead08f 80%, #dfb963 100%);
   }
   .grade {
     grid-template-columns: 1fr;

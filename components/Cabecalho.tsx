@@ -8,18 +8,23 @@ import { menu } from "@/data/menu";
 import { mensagens } from "@/lib/whatsapp";
 import { Logo } from "./Logo";
 import { BotaoPedido } from "./Pedido";
-import { IconInstagram, IconMenu, IconWhatsApp, IconX } from "./icons";
+import { IconMenu, IconWhatsApp, IconX } from "./icons";
 import styles from "./Cabecalho.module.css";
 
+// "/sabores/" e "/sabores" são a mesma página (o site usa barra no fim por causa do GitHub Pages).
+const semBarra = (c: string) => (c.length > 1 ? c.replace(/\/+$/, "") : c);
+
+// Cabeçalho igual ao da página do sabor no Figma: marca, menu com tracinho na página atual
+// e o botão do WhatsApp. O Instagram fica na faixa de cima e no rodapé.
 export function Cabecalho() {
-  const caminho = usePathname();
+  const caminho = semBarra(usePathname());
   const [menuAberto, setMenuAberto] = useState(false);
 
   return (
     <header className={styles.cabecalho}>
       <div className={`container ${styles.linha}`}>
         <Link href="/" className={styles.marca} onClick={() => setMenuAberto(false)}>
-          <Logo size={64} />
+          <Logo size={48} />
           <span className={styles.nome}>
             <strong>{loja.nome}</strong>
             <span>{loja.slogan}</span>
@@ -48,15 +53,6 @@ export function Cabecalho() {
         </nav>
 
         <div className={styles.acoes}>
-          <a
-            href={loja.instagramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.instagram}
-            aria-label={`Instagram ${loja.instagram}`}
-          >
-            <IconInstagram size={22} />
-          </a>
           <BotaoPedido mensagem={mensagens.pedido} variante="zap" tamanho="pequeno" className={styles.botaoPedido}>
             <IconWhatsApp size={18} />
             Pedir no WhatsApp
@@ -69,7 +65,7 @@ export function Cabecalho() {
             aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
             onClick={() => setMenuAberto((aberto) => !aberto)}
           >
-            {menuAberto ? <IconX size={24} /> : <IconMenu size={24} />}
+            {menuAberto ? <IconX size={20} /> : <IconMenu size={20} />}
           </button>
         </div>
       </div>

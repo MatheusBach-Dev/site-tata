@@ -11,9 +11,11 @@ export const loja = {
   whatsapp: "5531995661997",
   whatsappFormatado: "(31) 99566-1997",
 
-  // Links da loja nos apps de entrega. Enquanto estiverem vazios, os botões não aparecem.
-  ifoodUrl: "",
-  noveNoveFoodUrl: "",
+  // Links da loja nos apps de entrega (botões da página de cada sabor).
+  // PROVISÓRIO: hoje levam para a página inicial do app. Trocar pelo link da loja da Tatá
+  // (no app: abrir a loja → compartilhar → copiar link). Deixar "" esconde o botão.
+  ifoodUrl: "https://www.ifood.com.br/",
+  noveNoveFoodUrl: "https://99app.com/",
 
   instagram: "@gostosurasda_tata",
   instagramUrl: "https://www.instagram.com/gostosurasda_tata/",

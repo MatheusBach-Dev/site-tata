@@ -2,7 +2,7 @@
 
 import { loja } from "@/data/loja";
 import { usePedido } from "../Pedido";
-import { IconWhatsApp } from "../icons";
+import { IconArrowRight, IconWhatsApp } from "../icons";
 import styles from "./ComoPedir.module.css";
 
 // Bloco "Como você quer pedir?" da página de cada sabor.
@@ -39,6 +39,7 @@ export function ComoPedir({
             {esgotado ? "Chama a Tatá para saber quando volta" : `Retire na loja • ${loja.endereco.bairro}`}
           </small>
         </span>
+        {!esgotado && <IconArrowRight size={20} className={styles.seta} />}
       </button>
 
       {!esgotado && (ifood || noveNove) && (

@@ -54,6 +54,7 @@ export default async function PaginaSabor({ params }: PageProps<"/sabores/[slug]
   const linha = buscarLinha(sabor.linha);
   const preco = partesDoPreco(linha.preco);
   const outros = todosComFoto(outrosSabores(sabor));
+  const recadinho = sabor.apelido ?? (sabor.maisPedido ? "o queridinho da casa" : undefined);
 
   const caracteristicas = [
     { Icone: IconIceCream, texto: linha.peso ? `${linha.peso} de recheio` : linha.nome },
@@ -84,9 +85,9 @@ export default async function PaginaSabor({ params }: PageProps<"/sabores/[slug]
           <div className={styles.grade}>
             <div className={styles.vitrine}>
               <span className={styles.bolha} aria-hidden="true" />
-              {sabor.maisPedido && (
+              {recadinho && (
                 <p className={styles.queridinho} aria-hidden="true">
-                  o queridinho da casa
+                  {recadinho}
                   <svg viewBox="0 0 60 40" className={styles.setaCurva}>
                     <path d="M4 6 C 10 30, 30 34, 52 30" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
                     <path d="M44 23 L 53 30 L 44 36" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />

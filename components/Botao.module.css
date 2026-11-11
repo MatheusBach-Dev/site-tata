@@ -22,19 +22,20 @@
 .botao:disabled {
   cursor: not-allowed;
   transform: none;
-  background: #e7e0dc;
-  color: #8b7b7d;
+  background: var(--areia);
+  color: var(--texto-suave);
   border-color: transparent;
   box-shadow: none;
 }
 
+/* vinho em vez de rosa: com a paleta suave, texto branco no rosa fica com pouco contraste */
 .primario {
-  background: var(--rosa);
+  background: var(--vinho);
   color: var(--branco);
-  box-shadow: 0 10px 24px -10px rgba(232, 70, 124, 0.8);
+  box-shadow: 0 10px 24px -10px rgba(122, 46, 55, 0.55);
 }
 .primario:hover {
-  background: var(--rosa-escuro);
+  background: var(--vinho-escuro);
 }
 
 .secundario {
@@ -50,7 +51,7 @@
 .branco {
   background: var(--branco);
   color: var(--rosa-escuro);
-  box-shadow: 0 10px 24px -12px rgba(110, 14, 20, 0.5);
+  box-shadow: 0 10px 24px -12px rgba(75, 29, 35, 0.5);
 }
 
 .contorno {
@@ -59,7 +60,7 @@
   border-color: var(--vinho);
 }
 .contorno:hover {
-  background: rgba(163, 22, 28, 0.08);
+  background: rgba(122, 46, 55, 0.08);
 }
 
 .zap {

@@ -7,6 +7,7 @@
 // - esgotado: true    → foto apagada e sem cor, "Produto esgotado" e botão de pedido desligado
 // - descricao         → frase curta do card (opcional)
 // - sobre             → texto maior da página do sabor (opcional)
+// - apelido           → recadinho escrito à mão em cima da foto, um por sabor (opcional)
 // - Foto: salve em public/sabores/<slug>.jpg (ou .png/.webp). O site encontra sozinho.
 
 import type { LinhaId } from "./linhas";
@@ -17,16 +18,18 @@ export type Sabor = {
   linha: LinhaId;
   descricao?: string;
   sobre?: string;
+  apelido?: string;
   maisPedido: boolean;
   esgotado: boolean;
 };
 
 export const sabores: Sabor[] = [
   // ⭐ Chup-chup Gourmet — R$ 9,00
-  { slug: "ninho-com-nutella", nome: "Ninho com Nutella", linha: "gourmet", maisPedido: false, esgotado: false },
+  { slug: "ninho-com-nutella", nome: "Ninho com Nutella", apelido: "dupla que não tem erro", linha: "gourmet", maisPedido: false, esgotado: false },
   {
     slug: "ninho-com-frutas-vermelhas",
     nome: "Ninho com Frutas Vermelhas",
+    apelido: "docinho com azedinho",
     linha: "gourmet",
     descricao: "Creme de Leite Ninho com geleia de frutas vermelhas.",
     sobre:
@@ -37,6 +40,7 @@ export const sabores: Sabor[] = [
   {
     slug: "amendoim-torrado",
     nome: "Amendoim Torrado",
+    apelido: "festa junina o ano todo",
     linha: "gourmet",
     descricao: "Cremoso de amendoim torrado: gostinho de festa junina o ano todo.",
     maisPedido: false,
@@ -45,6 +49,7 @@ export const sabores: Sabor[] = [
   {
     slug: "pacoca-com-nutella",
     nome: "Paçoca com Nutella",
+    apelido: "pra quem é formiguinha",
     linha: "gourmet",
     descricao: "Paçoca cremosa com recheio generoso de Nutella.",
     maisPedido: false,
@@ -55,6 +60,7 @@ export const sabores: Sabor[] = [
   {
     slug: "delicia-de-abacaxi",
     nome: "Delícia de Abacaxi",
+    apelido: "refrescância pura",
     linha: "gourmet",
     descricao: "Abacaxi com creme: refrescante e docinho na medida certa.",
     maisPedido: false,
@@ -63,6 +69,7 @@ export const sabores: Sabor[] = [
   {
     slug: "pudim",
     nome: "Pudim",
+    apelido: "gostinho de casa de vó",
     linha: "gourmet",
     descricao: "Cremoso sabor pudim de leite, com aquela calda de caramelo.",
     maisPedido: false,
@@ -71,32 +78,34 @@ export const sabores: Sabor[] = [
   {
     slug: "romeu-e-julieta",
     nome: "Romeu e Julieta",
+    apelido: "clássico mineiro",
     linha: "gourmet",
     descricao: "Goiabada cremosa com queijo: o clássico mineiro em versão geladinha.",
     maisPedido: false,
     esgotado: false,
   },
-  { slug: "mousse-de-limao", nome: "Mousse de Limão", linha: "gourmet", maisPedido: false, esgotado: false },
+  { slug: "mousse-de-limao", nome: "Mousse de Limão", apelido: "azedinho que refresca", linha: "gourmet", maisPedido: false, esgotado: false },
   {
     slug: "mousse-de-maracuja",
     nome: "Mousse de Maracujá",
+    apelido: "azedinho na medida",
     linha: "gourmet",
     descricao: "Mousse de maracujá com calda da fruta e sementinhas crocantes.",
     maisPedido: false,
     esgotado: false,
   },
   { slug: "acai-com-leite-ninho", nome: "Açaí com Leite Ninho", linha: "gourmet", maisPedido: false, esgotado: false },
-  { slug: "brigadeiro", nome: "Brigadeiro", linha: "gourmet", maisPedido: false, esgotado: false },
+  { slug: "brigadeiro", nome: "Brigadeiro", apelido: "festa de criança", linha: "gourmet", maisPedido: false, esgotado: false },
   { slug: "caipirinha", nome: "Caipirinha", linha: "gourmet", maisPedido: false, esgotado: false },
   { slug: "ninho-com-morango", nome: "Ninho com Morango", linha: "gourmet", maisPedido: false, esgotado: false },
 
   // 🍫 Chup-chup Gourmet com casquinha de chocolate — R$ 10,00
-  { slug: "prestigio", nome: "Prestígio", linha: "casquinha", maisPedido: false, esgotado: false },
+  { slug: "prestigio", nome: "Prestígio", apelido: "coco com chocolate", linha: "casquinha", maisPedido: false, esgotado: false },
   { slug: "cafe-com-chocolate", nome: "Café com Chocolate", linha: "casquinha", maisPedido: false, esgotado: false },
   { slug: "ninho-trufado", nome: "Ninho Trufado", linha: "casquinha", maisPedido: false, esgotado: false },
 
   // ✨ Linha Premium — R$ 11,00
-  { slug: "torta-de-limao", nome: "Torta de Limão", linha: "premium", maisPedido: false, esgotado: false },
+  { slug: "torta-de-limao", nome: "Torta de Limão", apelido: "sobremesa de domingo", linha: "premium", maisPedido: false, esgotado: false },
   {
     slug: "cheesecake-de-frutas-vermelhas",
     nome: "Cheesecake de Frutas Vermelhas",

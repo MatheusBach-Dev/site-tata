@@ -1,6 +1,6 @@
 .fundo {
-  background: var(--creme);
-  padding: 32px 0 88px;
+  background: var(--fundo);
+  padding: 32px 0 96px;
 }
 
 /* Voltar + caminho (Início / Sabores / nome) */
@@ -16,7 +16,7 @@
   align-items: center;
   gap: 6px;
   padding: 8px 16px 8px 12px;
-  border: 1.5px solid var(--rosa-claro);
+  border: 1px solid var(--linha);
   border-radius: 999px;
   background: var(--branco);
   color: var(--vinho);
@@ -51,87 +51,106 @@
 
 .grade {
   display: grid;
-  grid-template-columns: minmax(0, 460px) minmax(0, 560px);
+  grid-template-columns: minmax(0, 560px) minmax(0, 536px);
   justify-content: space-between;
   align-items: start;
-  gap: 56px;
-  margin-top: 32px;
+  gap: 64px;
+  margin-top: 36px;
 }
 
-/* Vitrine: cartão rosa com a foto em arco */
+/* Vitrine: painel areia com a foto grande (paleta suave do Figma) */
 .vitrine {
   position: sticky;
   top: 120px;
   overflow: hidden;
-  aspect-ratio: 460 / 530;
-  border-radius: 32px;
-  background: var(--rosa-claro);
+  aspect-ratio: 560 / 660;
+  border-radius: 40px;
+  background: var(--areia);
   container-type: inline-size;
+}
+
+/* bolha rosa no canto de cima */
+.vitrine::before {
+  content: "";
+  position: absolute;
+  right: -16%;
+  top: -14%;
+  width: 75%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--rosa-claro);
 }
 
 .bolha {
   position: absolute;
-  left: -18%;
-  bottom: -14%;
-  width: 52%;
+  left: -9%;
+  bottom: -9%;
+  width: 32%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--amarelo-claro);
+  background: var(--mostarda-claro);
 }
 
 .queridinho {
   position: absolute;
-  top: 7%;
-  left: 7%;
+  top: 3.5%;
+  left: 6.5%;
   z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  gap: 1cqi;
+  margin: 0;
   font-family: var(--fonte-script);
-  font-weight: 600;
-  font-size: 5.4cqi;
-  color: var(--rosa-escuro);
-  transform: rotate(-6deg);
+  font-weight: 700;
+  font-size: 5.3cqi;
+  line-height: 1.2;
+  color: var(--rosa);
+  transform: rotate(-4deg);
+  transform-origin: left center;
 }
 .setaCurva {
   display: block;
-  width: 12cqi;
-  margin: 1cqi 0 0 4cqi;
+  flex-shrink: 0;
+  width: 9cqi;
+  margin-top: 3cqi;
 }
 
 .foto {
   position: absolute !important;
   left: 50%;
-  top: 20%;
-  width: 62%;
-  aspect-ratio: 290 / 370;
+  top: 11.5%;
+  width: 89%;
+  aspect-ratio: 500 / 556;
   transform: translateX(-50%);
-  border-radius: 999px 999px 26px 26px;
-  border: 8px solid var(--branco);
-  box-shadow: 0 26px 50px -24px rgba(110, 14, 20, 0.5);
+  border-radius: 13cqi 13cqi 5cqi 5cqi;
+  border: 8px solid #fff;
+  box-shadow: 0 18px 40px -16px rgba(75, 29, 35, 0.35);
 }
 
 .seloPeso {
   position: absolute;
-  top: 13%;
-  right: 7%;
+  top: 4%;
+  right: 1%;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 24%;
+  width: 22%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--amarelo-ouro);
-  color: var(--vinho);
-  font-size: 2.8cqi;
+  background: var(--mostarda);
+  color: var(--vinho-escuro);
+  font-size: 2.2cqi;
   font-weight: 600;
   line-height: 1.1;
-  transform: rotate(-10deg);
-  box-shadow: 0 12px 24px -12px rgba(110, 14, 20, 0.5);
+  transform: rotate(-12deg);
+  box-shadow: 0 8px 18px -6px rgba(75, 29, 35, 0.3);
 }
 .seloPeso strong {
   font-family: var(--fonte-titulo);
-  font-size: 6.4cqi;
-  font-weight: 800;
+  font-size: 5.4cqi;
+  font-weight: 900;
 }
 
 .avisoEsgotado {
@@ -168,7 +187,8 @@
   text-transform: uppercase;
 }
 .etiquetaMaisPedido {
-  background: var(--amarelo-claro);
+  background: var(--mostarda-claro);
+  color: var(--vinho-escuro);
 }
 .etiquetaEsgotado {
   background: var(--vinho);
@@ -177,64 +197,82 @@
 
 .titulo {
   margin-top: 14px;
-  font-size: clamp(36px, 4.4vw, 54px);
-  font-weight: 800;
-  line-height: 1.04;
+  font-size: clamp(34px, 4.4vw, 52px);
+  font-weight: 900;
+  line-height: 1.02;
 }
 
 .descricao {
-  margin-top: 12px;
-  font-size: 16px;
+  margin-top: 14px;
+  font-size: 18px;
+  line-height: 1.5;
   color: var(--texto-suave);
 }
 
 .preco {
+  position: relative;
   display: inline-flex;
   align-items: baseline;
-  gap: 6px;
-  margin-top: 20px;
-  padding: 12px 22px;
-  border: 2px dashed var(--amarelo-ouro);
-  border-radius: 16px;
-  background: var(--amarelo-claro);
-  color: var(--vinho);
+  gap: 4px;
+  margin-top: 22px;
+  padding: 14px 22px 14px 44px;
+  border: 1.5px dashed var(--mostarda);
+  border-radius: 18px;
+  background: var(--mostarda-claro);
+  color: var(--vinho-escuro);
 }
+/* furinho de etiqueta */
+.preco::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  border-radius: 50%;
+  border: 1.5px solid var(--mostarda);
+  background: var(--fundo);
+}
+
 .moeda {
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--vinho);
 }
 .preco strong {
   font-family: var(--fonte-titulo);
-  font-size: 40px;
-  font-weight: 800;
+  font-size: 42px;
+  font-weight: 900;
   line-height: 1;
 }
 .unidade {
-  margin-left: 6px;
+  margin-left: 10px;
   font-size: 13px;
   color: var(--texto-suave);
 }
 
 .rotulo {
-  margin-top: 24px;
+  margin-top: 26px;
   font-family: var(--fonte-texto);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--rosa-escuro);
+  color: var(--rosa);
 }
 
 .sobre {
-  margin-top: 6px;
-  font-size: 15px;
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 1.65;
 }
 
 .caracteristicas {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  margin: 22px 0 0;
+  gap: 12px;
+  margin: 24px 0 0;
   padding: 0;
   list-style: none;
 }
@@ -243,50 +281,49 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  padding: 14px 8px;
+  padding: 16px 12px;
   border-radius: 16px;
-  background: var(--branco);
-  border: 1px solid var(--rosa-claro);
+  background: var(--areia);
   font-size: 13px;
   font-weight: 600;
   text-align: center;
-  color: var(--vinho);
+  color: var(--vinho-escuro);
 }
 .caracteristicaIcone {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: var(--rosa-claro);
-  color: var(--rosa-escuro);
+  background: var(--branco);
+  color: var(--rosa);
 }
 
 .tituloPedido {
-  margin: 28px 0 12px;
+  margin: 30px 0 12px;
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .duvida {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-top: 14px;
-  padding: 14px 16px;
-  border: 1.5px dashed var(--rosa-claro);
-  border-radius: 14px;
-  font-size: 13px;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 14px 18px;
+  border: 1.5px dashed var(--linha);
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
 }
 .duvida svg {
   flex-shrink: 0;
-  margin-top: 2px;
   color: var(--rosa);
 }
 .duvida strong {
   display: block;
   font-weight: 600;
-  color: var(--rosa-escuro);
+  color: var(--rosa);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -297,25 +334,27 @@
 /* Outros sabores */
 .outros {
   padding: 72px 0 88px;
+  background: var(--branco);
+  border-top: 1px solid var(--linha);
 }
 
 .chamada {
   font-family: var(--fonte-script);
-  font-weight: 600;
-  font-size: 22px;
+  font-weight: 700;
+  font-size: clamp(24px, 2.4vw, 30px);
   color: var(--rosa);
 }
 
 .tituloOutros {
-  font-size: clamp(28px, 3.4vw, 40px);
-  font-weight: 800;
+  font-size: clamp(30px, 3.4vw, 40px);
+  font-weight: 900;
 }
 
 .gradeOutros {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
-  margin-top: 24px;
+  gap: 32px;
+  margin-top: 32px;
 }
 
 .verTodos {

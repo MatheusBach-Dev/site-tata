@@ -1,10 +1,11 @@
+/* Medidas do header da página do sabor no Figma (nota "Tatá - Cores e Header do site"). */
 .cabecalho {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 253, 249, 0.94); /* --branco, um pouco transparente */
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--rosa-claro);
+  border-bottom: 1px solid var(--linha);
 }
 
 .linha {
@@ -13,13 +14,13 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  min-height: 94px;
+  min-height: 84px;
 }
 
 .marca {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
 }
 
 .nome {
@@ -29,90 +30,93 @@
 }
 .nome strong {
   font-family: var(--fonte-titulo);
-  font-size: 23px;
-  font-weight: 700;
-  color: var(--vinho);
+  font-size: 19px;
+  font-weight: 900;
+  color: var(--vinho-escuro);
 }
 .nome span {
   font-family: var(--fonte-script);
-  font-weight: 600;
-  font-size: 19px;
-  color: var(--vinho);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--rosa);
 }
 
 .menu {
   display: flex;
   gap: 34px;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 15px;
+  color: var(--texto-suave);
 }
 .menu a {
+  white-space: nowrap;
   position: relative;
   padding: 4px 0;
   transition: color 0.15s ease;
 }
-.menu a:hover,
-.menu .ativo {
-  color: var(--rosa);
+.menu a:hover {
+  color: var(--vinho);
 }
+.menu .ativo {
+  font-weight: 600;
+  color: var(--vinho);
+}
+/* tracinho rosa embaixo da página atual */
 .menu .ativo::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -4px;
+  left: 50%;
+  bottom: -6px;
+  width: 18px;
   height: 3px;
-  border-radius: 3px;
+  border-radius: 2px;
   background: var(--rosa);
+  transform: translateX(-50%);
 }
 
 .acoes {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
-.instagram {
-  display: grid;
-  place-items: center;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: var(--rosa-claro);
-  color: var(--vinho);
-  transition: background-color 0.15s ease;
-}
-.instagram:hover {
-  background: var(--rosa-claro);
+.botaoPedido {
+  min-height: 44px;
+  padding: 0 20px;
+  gap: 8px;
+  font-size: 14px;
 }
 
 .abrirMenu {
   display: none;
   place-items: center;
-  width: 46px;
-  height: 46px;
+  width: 40px;
+  height: 40px;
   border: 0;
   border-radius: 50%;
-  background: var(--rosa-bem-claro);
-  color: var(--vinho);
+  background: var(--areia);
+  color: var(--vinho-escuro);
+}
+
+@media (max-width: 1180px) {
+  .menu {
+    gap: 22px;
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 1080px) {
-  .menu {
-    gap: 22px;
-    font-size: 15px;
-  }
-}
-
-@media (max-width: 960px) {
   .linha {
-    min-height: 76px;
+    min-height: 64px;
   }
   .marca {
-    --logo-tamanho: 52px;
+    --logo-tamanho: 38px;
   }
   .nome strong {
-    font-size: 20px;
+    font-size: 16px;
+  }
+  .nome span {
+    font-size: 14px;
   }
   .abrirMenu {
     display: grid;
@@ -127,7 +131,7 @@
     gap: 0;
     padding: 8px var(--margem-lateral) 20px;
     background: var(--branco);
-    border-bottom: 1px solid var(--rosa-claro);
+    border-bottom: 1px solid var(--linha);
     box-shadow: var(--sombra);
   }
   .menu a {
@@ -143,7 +147,6 @@
 }
 
 @media (max-width: 600px) {
-  .instagram,
   .botaoPedido {
     display: none;
   }
