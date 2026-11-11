@@ -113,3 +113,41 @@ export function IconWhatsApp({ size = 24, className }: IconProps) {
     </svg>
   );
 }
+
+export function IconArrowRight(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="M5 12h14" />
+      <path d="m12 5 7 7-7 7" />
+    </Stroke>
+  );
+}
+
+export function IconChevronLeft(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="m15 18-6-6 6-6" />
+    </Stroke>
+  );
+}
+
+export function IconSnowflake(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <line x1="2" x2="22" y1="12" y2="12" />
+      <line x1="12" x2="12" y1="2" y2="22" />
+      <path d="m20 16-4-4 4-4" />
+      <path d="m4 8 4 4-4 4" />
+      <path d="m16 4-4 4-4-4" />
+      <path d="m8 20 4-4 4 4" />
+    </Stroke>
+  );
+}
+
+export function IconMessage(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+    </Stroke>
+  );
+}

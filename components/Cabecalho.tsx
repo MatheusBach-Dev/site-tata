@@ -31,17 +31,20 @@ export function Cabecalho() {
           className={`${styles.menu} ${menuAberto ? styles.menuAberto : ""}`}
           aria-label="Menu principal"
         >
-          {menu.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={caminho === item.href ? styles.ativo : undefined}
-              aria-current={caminho === item.href ? "page" : undefined}
-              onClick={() => setMenuAberto(false)}
-            >
-              {item.rotulo}
-            </Link>
-          ))}
+          {menu.map((item) => {
+            const ativo = caminho === item.href || caminho.startsWith(`${item.href}/`);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={ativo ? styles.ativo : undefined}
+                aria-current={caminho === item.href ? "page" : undefined}
+                onClick={() => setMenuAberto(false)}
+              >
+                {item.rotulo}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className={styles.acoes}>

@@ -1,0 +1,36 @@
+.fundo {
+  background: var(--creme);
+  padding: 64px 0 88px;
+}
+
+.topo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.chamada {
+  font-family: var(--fonte-script);
+  font-weight: 600;
+  font-size: 26px;
+  color: var(--rosa);
+}
+
+.titulo {
+  font-size: clamp(34px, 4.6vw, 54px);
+  font-weight: 800;
+}
+
+.texto {
+  max-width: 520px;
+  margin-top: 12px;
+  color: var(--texto-suave);
+}
+
+@media (max-width: 640px) {
+  .fundo {
+    padding: 40px 0 64px;
+  }
+}

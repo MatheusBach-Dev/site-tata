@@ -1,17 +1,18 @@
 import Image from "next/image";
-import type { Sabor } from "@/data/sabores";
+import { buscarLinha } from "@/data/linhas";
+import type { SaborComFoto } from "@/lib/fotos";
 import { IconIceCream } from "./icons";
 import styles from "./FotoSabor.module.css";
 
-// Mostra a foto do sabor. Se ainda não tiver foto em data/sabores.ts,
-// mostra um desenho com a cor do sabor no lugar.
+// Mostra a foto do sabor. Sem foto em public/sabores/, mostra um desenho
+// com a cor da linha no lugar. Sabor esgotado fica apagado e sem cor.
 export function FotoSabor({
   sabor,
   sizes,
   className,
   priority = false,
 }: {
-  sabor: Sabor;
+  sabor: SaborComFoto;
   sizes: string;
   className?: string;
   priority?: boolean;
@@ -19,7 +20,7 @@ export function FotoSabor({
   return (
     <div
       className={[styles.foto, sabor.esgotado ? styles.esgotado : "", className ?? ""].join(" ")}
-      style={{ "--cor-sabor": sabor.cor } as React.CSSProperties}
+      style={{ "--cor-sabor": buscarLinha(sabor.linha).cor } as React.CSSProperties}
     >
       {sabor.foto ? (
         <Image src={sabor.foto} alt={sabor.nome} fill sizes={sizes} priority={priority} />

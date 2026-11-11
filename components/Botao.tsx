@@ -13,7 +13,7 @@ type Comum = {
 };
 
 type BotaoLink = Comum & { href: string; externo?: boolean; onClick?: never };
-type BotaoAcao = Comum & { onClick: () => void; href?: never; externo?: never };
+type BotaoAcao = Comum & { onClick: () => void; desativado?: boolean; href?: never; externo?: never };
 
 export function classesBotao({
   variante = "primario",
@@ -51,7 +51,7 @@ export function Botao(props: BotaoLink | BotaoAcao) {
   }
 
   return (
-    <button type="button" onClick={props.onClick} className={classes}>
+    <button type="button" onClick={props.onClick} className={classes} disabled={props.desativado}>
       {props.children}
     </button>
   );

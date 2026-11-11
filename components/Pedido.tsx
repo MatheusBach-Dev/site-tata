@@ -126,11 +126,13 @@ export function BotaoPedido({
   variante = "primario",
   tamanho = "normal",
   className,
+  desativado = false,
   children,
 }: PedidoAberto & {
   variante?: BotaoVariante;
   tamanho?: BotaoTamanho;
   className?: string;
+  desativado?: boolean;
   children: React.ReactNode;
 }) {
   const abrir = usePedido();
@@ -139,6 +141,7 @@ export function BotaoPedido({
       variante={variante}
       tamanho={tamanho}
       className={className}
+      desativado={desativado}
       onClick={() => abrir({ mensagem, titulo, detalhe })}
     >
       {children}

@@ -9,6 +9,7 @@ export const mensagens = {
   pedido: "Oi, Tatá! Vim pelo site e quero fazer um pedido.",
   cardapio:
     "Oi, Tatá! Vim pelo site e quero receber o cardápio completo com os preços.",
-  sabor: (nome: string) =>
-    `Oi, Tatá! Vim pelo site e quero pedir: 1x ${nome}. Vou retirar na loja!`,
+  sabor: (nome: string, linha?: string) =>
+    `Oi, Tatá! Vim pelo site e quero pedir: 1x ${nome}${linha ? ` (${linha})` : ""}. Vou retirar na loja!`,
+  duvida: "Oi, Tatá! Vim pelo site e queria tirar uma dúvida sobre os sabores.",
 };

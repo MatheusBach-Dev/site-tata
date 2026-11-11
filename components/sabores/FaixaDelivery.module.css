@@ -1,0 +1,79 @@
+.faixa {
+  background: var(--amarelo-claro);
+  padding: 72px 0;
+}
+
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.chamada {
+  font-family: var(--fonte-script);
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--rosa);
+}
+
+.titulo {
+  font-size: clamp(30px, 3.6vw, 44px);
+  font-weight: 800;
+}
+
+.texto {
+  max-width: 520px;
+  margin-top: 12px;
+  color: var(--texto-suave);
+}
+
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.app {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 0 26px 0 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: transform 0.15s ease;
+}
+.app:hover {
+  transform: translateY(-2px);
+}
+
+.selo {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.noveNove {
+  background: var(--amarelo-ouro);
+  color: var(--texto);
+}
+.noveNove .selo {
+  background: var(--texto);
+  color: var(--amarelo-ouro);
+}
+
+.ifood {
+  background: var(--vinho);
+  color: var(--branco);
+}
+.ifood .selo {
+  background: var(--branco);
+  color: var(--vinho);
+}

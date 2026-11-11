@@ -1,0 +1,359 @@
+.fundo {
+  background: var(--creme);
+  padding: 32px 0 88px;
+}
+
+/* Voltar + caminho (Início / Sabores / nome) */
+.navegacao {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+}
+
+.voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px 8px 12px;
+  border: 1.5px solid var(--rosa-claro);
+  border-radius: 999px;
+  background: var(--branco);
+  color: var(--vinho);
+  font-size: 14px;
+  font-weight: 500;
+}
+.voltar:hover {
+  border-color: var(--vinho);
+}
+
+.caminho {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  color: var(--texto-suave);
+}
+.caminho li + li::before {
+  content: "/";
+  margin: 0 8px;
+  opacity: 0.6;
+}
+.caminho a:hover {
+  color: var(--vinho);
+}
+.caminho [aria-current] {
+  color: var(--texto);
+  font-weight: 500;
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: minmax(0, 460px) minmax(0, 560px);
+  justify-content: space-between;
+  align-items: start;
+  gap: 56px;
+  margin-top: 32px;
+}
+
+/* Vitrine: cartão rosa com a foto em arco */
+.vitrine {
+  position: sticky;
+  top: 120px;
+  overflow: hidden;
+  aspect-ratio: 460 / 530;
+  border-radius: 32px;
+  background: var(--rosa-claro);
+  container-type: inline-size;
+}
+
+.bolha {
+  position: absolute;
+  left: -18%;
+  bottom: -14%;
+  width: 52%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--amarelo-claro);
+}
+
+.queridinho {
+  position: absolute;
+  top: 7%;
+  left: 7%;
+  z-index: 2;
+  font-family: var(--fonte-script);
+  font-weight: 600;
+  font-size: 5.4cqi;
+  color: var(--rosa-escuro);
+  transform: rotate(-6deg);
+}
+.setaCurva {
+  display: block;
+  width: 12cqi;
+  margin: 1cqi 0 0 4cqi;
+}
+
+.foto {
+  position: absolute !important;
+  left: 50%;
+  top: 20%;
+  width: 62%;
+  aspect-ratio: 290 / 370;
+  transform: translateX(-50%);
+  border-radius: 999px 999px 26px 26px;
+  border: 8px solid var(--branco);
+  box-shadow: 0 26px 50px -24px rgba(110, 14, 20, 0.5);
+}
+
+.seloPeso {
+  position: absolute;
+  top: 13%;
+  right: 7%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 24%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--amarelo-ouro);
+  color: var(--vinho);
+  font-size: 2.8cqi;
+  font-weight: 600;
+  line-height: 1.1;
+  transform: rotate(-10deg);
+  box-shadow: 0 12px 24px -12px rgba(110, 14, 20, 0.5);
+}
+.seloPeso strong {
+  font-family: var(--fonte-titulo);
+  font-size: 6.4cqi;
+  font-weight: 800;
+}
+
+.avisoEsgotado {
+  position: absolute;
+  left: 50%;
+  bottom: 9%;
+  z-index: 2;
+  transform: translateX(-50%);
+  padding: 8px 20px;
+  border-radius: 999px;
+  background: var(--vinho);
+  color: var(--branco);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Informações do sabor */
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--rosa-claro);
+  color: var(--vinho);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.etiquetaMaisPedido {
+  background: var(--amarelo-claro);
+}
+.etiquetaEsgotado {
+  background: var(--vinho);
+  color: var(--branco);
+}
+
+.titulo {
+  margin-top: 14px;
+  font-size: clamp(36px, 4.4vw, 54px);
+  font-weight: 800;
+  line-height: 1.04;
+}
+
+.descricao {
+  margin-top: 12px;
+  font-size: 16px;
+  color: var(--texto-suave);
+}
+
+.preco {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 20px;
+  padding: 12px 22px;
+  border: 2px dashed var(--amarelo-ouro);
+  border-radius: 16px;
+  background: var(--amarelo-claro);
+  color: var(--vinho);
+}
+.moeda {
+  font-weight: 700;
+  font-size: 16px;
+}
+.preco strong {
+  font-family: var(--fonte-titulo);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+}
+.unidade {
+  margin-left: 6px;
+  font-size: 13px;
+  color: var(--texto-suave);
+}
+
+.rotulo {
+  margin-top: 24px;
+  font-family: var(--fonte-texto);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rosa-escuro);
+}
+
+.sobre {
+  margin-top: 6px;
+  font-size: 15px;
+}
+
+.caracteristicas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.caracteristicas li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 8px;
+  border-radius: 16px;
+  background: var(--branco);
+  border: 1px solid var(--rosa-claro);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--vinho);
+}
+.caracteristicaIcone {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--rosa-claro);
+  color: var(--rosa-escuro);
+}
+
+.tituloPedido {
+  margin: 28px 0 12px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.duvida {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1.5px dashed var(--rosa-claro);
+  border-radius: 14px;
+  font-size: 13px;
+}
+.duvida svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--rosa);
+}
+.duvida strong {
+  display: block;
+  font-weight: 600;
+  color: var(--rosa-escuro);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.duvida:hover {
+  border-color: var(--rosa);
+}
+
+/* Outros sabores */
+.outros {
+  padding: 72px 0 88px;
+}
+
+.chamada {
+  font-family: var(--fonte-script);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--rosa);
+}
+
+.tituloOutros {
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 800;
+}
+
+.gradeOutros {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.verTodos {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+@media (max-width: 960px) {
+  .grade {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .vitrine {
+    position: relative;
+    top: auto;
+    width: 100%;
+    max-width: 460px;
+    justify-self: center;
+  }
+  .gradeOutros {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (max-width: 520px) {
+  .fundo {
+    padding: 20px 0 64px;
+  }
+  .caminho {
+    display: none;
+  }
+  .caracteristicas li {
+    font-size: 12px;
+    padding: 12px 6px;
+  }
+  .outros {
+    padding: 56px 0 72px;
+  }
+}

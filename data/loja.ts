@@ -11,6 +11,10 @@ export const loja = {
   whatsapp: "5531995661997",
   whatsappFormatado: "(31) 99566-1997",
 
+  // Links da loja nos apps de entrega. Enquanto estiverem vazios, os botões não aparecem.
+  ifoodUrl: "",
+  noveNoveFoodUrl: "",
+
   instagram: "@gostosurasda_tata",
   instagramUrl: "https://www.instagram.com/gostosurasda_tata/",
 
