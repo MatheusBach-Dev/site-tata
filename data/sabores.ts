@@ -3,7 +3,9 @@
 // estes dados passam a vir do banco (Supabase) e as páginas não mudam.
 //
 // Como mexer:
-// - maisPedido: true  → aparece a etiqueta "Mais pedido" no card e na página do sabor
+// - maisPedido: true  → aparece a etiqueta "Mais pedido" no card e na página do sabor.
+//                       O PRIMEIRO sabor com maisPedido: true é o destaque do topo da home
+//                       (foto grande + card com o botão de pedir).
 // - esgotado: true    → foto apagada e sem cor, "Produto esgotado" e botão de pedido desligado
 // - descricao         → frase curta do card (opcional)
 // - sobre             → texto maior da página do sabor (opcional)
@@ -25,7 +27,7 @@ export type Sabor = {
 
 export const sabores: Sabor[] = [
   // ⭐ Chup-chup Gourmet — R$ 9,00
-  { slug: "ninho-com-nutella", nome: "Ninho com Nutella", apelido: "dupla que não tem erro", linha: "gourmet", maisPedido: false, esgotado: false },
+  { slug: "ninho-com-nutella", nome: "Ninho com Nutella", apelido: "dupla que não tem erro", linha: "gourmet", maisPedido: true, esgotado: false },
   {
     slug: "ninho-com-frutas-vermelhas",
     nome: "Ninho com Frutas Vermelhas",
@@ -128,6 +130,11 @@ export const sabores: Sabor[] = [
   { slug: "cremoso-uva", nome: "Uva", linha: "cremoso", maisPedido: false, esgotado: false },
   { slug: "cremoso-limao", nome: "Limão", linha: "cremoso", maisPedido: false, esgotado: false },
 ];
+
+/** Sabor do topo da home: o primeiro com maisPedido: true (se nenhum tiver, o primeiro da lista). */
+export function saborDestaque(): Sabor {
+  return sabores.find((s) => s.maisPedido && !s.esgotado) ?? sabores[0];
+}
 
 export function buscarSabor(slug: string): Sabor | undefined {
   return sabores.find((s) => s.slug === slug);
