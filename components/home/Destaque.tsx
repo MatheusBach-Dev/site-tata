@@ -1,11 +1,12 @@
 import { buscarLinha } from "@/data/linhas";
-import { buscarSabor } from "@/data/sabores";
+import { saborDestaque } from "@/data/sabores";
 import { comFoto } from "@/lib/fotos";
+import { formatarPreco } from "@/lib/formato";
 import { mensagens } from "@/lib/whatsapp";
 import { Botao } from "../Botao";
 import { FotoSabor } from "../FotoSabor";
 import { BotaoPedido } from "../Pedido";
-import { IconHeart, IconWhatsApp } from "../icons";
+import { IconHeart, IconSparkles, IconWhatsApp } from "../icons";
 import styles from "./Destaque.module.css";
 
 const numeros = [
@@ -14,10 +15,11 @@ const numeros = [
   { valor: "135g", legenda: "de puro recheio" },
 ];
 
+// Topo da home: UM sabor só, o mais pedido. A foto grande e o card de pedir são do mesmo sabor.
+// Para trocar o sabor, mude o maisPedido em data/sabores.ts. A foto vem de public/sabores/<slug>.jpg.
 export function Destaque() {
-  const ninho = comFoto(buscarSabor("ninho-com-frutas-vermelhas")!);
-  const pudim = comFoto(buscarSabor("pudim")!);
-  const linhaPudim = buscarLinha(pudim.linha);
+  const destaque = comFoto(saborDestaque());
+  const linha = buscarLinha(destaque.linha);
 
   return (
     <section className={styles.destaque}>
@@ -63,7 +65,7 @@ export function Destaque() {
 
         <div className={styles.vitrine}>
           <span className={styles.anel} aria-hidden="true" />
-          <FotoSabor sabor={ninho} sizes="(max-width: 960px) 80vw, 468px" className={styles.fotoPrincipal} priority />
+          <FotoSabor sabor={destaque} sizes="(max-width: 960px) 80vw, 468px" className={styles.fotoPrincipal} priority />
 
           <IconHeart className={`${styles.coracao} ${styles.coracao1}`} />
           <IconHeart className={`${styles.coracao} ${styles.coracao2}`} />
@@ -75,19 +77,21 @@ export function Destaque() {
             <IconHeart className={styles.carimboCoracao} />
           </span>
 
+          {/* card do mesmo sabor da foto: selo "mais pedido" no lugar de repetir a foto */}
           <div className={styles.cartao}>
-            <FotoSabor sabor={pudim} sizes="64px" className={styles.cartaoFoto} />
+            <span className={styles.cartaoSelo} aria-hidden="true">
+              <IconSparkles size={26} />
+            </span>
             <div className={styles.cartaoInfo}>
-              <strong>{pudim.nome}</strong>
-              <span>{linhaPudim.peso ? `${linhaPudim.peso} de cremosidade` : linhaPudim.nome}</span>
+              <small>O mais pedido</small>
+              <strong>{destaque.nome}</strong>
+              <span>
+                {formatarPreco(linha.preco)}
+                {linha.peso ? ` • ${linha.peso} de recheio` : ""}
+              </span>
             </div>
-            <BotaoPedidoIcone nome={pudim.nome} linha={linhaPudim.curto} detalhe={pudim.descricao} />
+            <BotaoPedidoIcone nome={destaque.nome} linha={linha.curto} detalhe={destaque.descricao} />
           </div>
-
-          <p className={styles.etiqueta}>
-            <span className={styles.ponto} aria-hidden="true" />
-            {ninho.nome}
-          </p>
         </div>
       </div>
     </section>
