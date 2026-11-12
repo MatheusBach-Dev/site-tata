@@ -29,7 +29,7 @@ export const sabores: Sabor[] = [
   // ⭐ Chup-chup Gourmet — R$ 9,00
   { slug: "ninho-com-nutella", nome: "Ninho com Nutella", apelido: "dupla que não tem erro", linha: "gourmet", maisPedido: true, esgotado: false },
   {
-    slug: "ninho-com-frutas-vermelhas",
+    slug: "ninho-com-nutella2",
     nome: "Ninho com Frutas Vermelhas",
     apelido: "docinho com azedinho",
     linha: "gourmet",

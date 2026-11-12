@@ -3,6 +3,7 @@ import { saborDestaque } from "@/data/sabores";
 import { comFoto } from "@/lib/fotos";
 import { formatarPreco } from "@/lib/formato";
 import { mensagens } from "@/lib/whatsapp";
+import Image from "next/image";
 import { Botao } from "../Botao";
 import { FotoSabor } from "../FotoSabor";
 import { BotaoPedido } from "../Pedido";
@@ -39,12 +40,17 @@ export function Destaque() {
           </h1>
 
           <p className={styles.descricao}>
-            Chup chup gourmet feito à mão, com muito recheio e carinho em cada saquinho. Peça pelo
-            WhatsApp e retire na nossa loja ou encontre nos pontos de revenda.
+            Chup chup gourmet feito à mão, com muito recheio e carinho em cada
+            saquinho. Peça pelo WhatsApp e retire na nossa loja ou encontre nos
+            pontos de revenda.
           </p>
 
           <div className={styles.botoes}>
-            <BotaoPedido mensagem={mensagens.pedido} variante="zap" tamanho="grande">
+            <BotaoPedido
+              mensagem={mensagens.pedido}
+              variante="zap"
+              tamanho="grande"
+            >
               <IconWhatsApp size={22} />
               Pedir pelo WhatsApp
             </BotaoPedido>
@@ -65,7 +71,12 @@ export function Destaque() {
 
         <div className={styles.vitrine}>
           <span className={styles.anel} aria-hidden="true" />
-          <FotoSabor sabor={destaque} sizes="(max-width: 960px) 80vw, 468px" className={styles.fotoPrincipal} priority />
+          <FotoSabor
+            sabor={destaque}
+            sizes="(max-width: 960px) 80vw, 468px"
+            className={styles.fotoPrincipal}
+            priority
+          />
 
           <IconHeart className={`${styles.coracao} ${styles.coracao1}`} />
           <IconHeart className={`${styles.coracao} ${styles.coracao2}`} />
@@ -79,9 +90,14 @@ export function Destaque() {
 
           {/* card do mesmo sabor da foto: selo "mais pedido" no lugar de repetir a foto */}
           <div className={styles.cartao}>
-            <span className={styles.cartaoSelo} aria-hidden="true">
-              <IconSparkles size={26} />
-            </span>
+            <Image
+              src="/sabores/ninho-com-nutella2.jpeg"
+              alt=""
+              width={80}
+              height={80}
+              className={styles.cartaoSelo}
+              style={{ objectFit: "cover" }}
+            />
             <div className={styles.cartaoInfo}>
               <small>O mais pedido</small>
               <strong>{destaque.nome}</strong>
@@ -90,7 +106,11 @@ export function Destaque() {
                 {linha.peso ? ` • ${linha.peso} de recheio` : ""}
               </span>
             </div>
-            <BotaoPedidoIcone nome={destaque.nome} linha={linha.curto} detalhe={destaque.descricao} />
+            <BotaoPedidoIcone
+              nome={destaque.nome}
+              linha={linha.curto}
+              detalhe={destaque.descricao}
+            />
           </div>
         </div>
       </div>
@@ -98,7 +118,15 @@ export function Destaque() {
   );
 }
 
-function BotaoPedidoIcone({ nome, linha, detalhe }: { nome: string; linha: string; detalhe?: string }) {
+function BotaoPedidoIcone({
+  nome,
+  linha,
+  detalhe,
+}: {
+  nome: string;
+  linha: string;
+  detalhe?: string;
+}) {
   return (
     <BotaoPedido
       mensagem={mensagens.sabor(nome, linha)}
