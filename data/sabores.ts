@@ -10,7 +10,12 @@
 // - descricao         → frase curta do card (opcional)
 // - sobre             → texto maior da página do sabor (opcional)
 // - apelido           → recadinho escrito à mão em cima da foto, um por sabor (opcional)
-// - Foto: salve em public/sabores/<slug>.jpg (ou .png/.webp). O site encontra sozinho.
+// - foto              → caminho da foto do sabor. Ex.: foto: "public/sabores/ninho com nutella.jpg"
+//                       (pode ter espaço no nome. Sem foto, aparece um desenho no lugar)
+// - fotoCard          → foto do quadradinho do card "O mais pedido" no topo da home (opcional).
+//                       Sem ela, o quadradinho mostra um brilho.
+// - slug              → nome do sabor no endereço da página: /sabores/ninho-com-nutella.
+//                       Sem espaço e sem acento, porque vai no link. Não precisa mexer.
 
 import type { LinhaId } from "./linhas";
 
@@ -21,15 +26,26 @@ export type Sabor = {
   descricao?: string;
   sobre?: string;
   apelido?: string;
+  foto?: string;
+  fotoCard?: string;
   maisPedido: boolean;
   esgotado: boolean;
 };
 
 export const sabores: Sabor[] = [
   // ⭐ Chup-chup Gourmet — R$ 9,00
-  { slug: "ninho-com-nutella", nome: "Ninho com Nutella", apelido: "dupla que não tem erro", linha: "gourmet", maisPedido: true, esgotado: false },
   {
-    slug: "ninho-com-nutella2",
+    slug: "ninho-com-nutella",
+    nome: "Ninho com Nutella",
+    apelido: "dupla que não tem erro",
+    linha: "gourmet",
+    foto: "public/sabores/ninho-com-nutella.jpeg",
+    fotoCard: "public/sabores/ninho-com-nutella2.jpeg",
+    maisPedido: true,
+    esgotado: false,
+  },
+  {
+    slug: "ninho-com-frutas-vermelhas",
     nome: "Ninho com Frutas Vermelhas",
     apelido: "docinho com azedinho",
     linha: "gourmet",
