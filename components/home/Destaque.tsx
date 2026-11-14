@@ -17,7 +17,8 @@ const numeros = [
 ];
 
 // Topo da home: UM sabor só, o mais pedido. A foto grande e o card de pedir são do mesmo sabor.
-// Para trocar o sabor, mude o maisPedido em data/sabores.ts. A foto vem de public/sabores/<slug>.jpg.
+// Para trocar o sabor, mude o maisPedido em data/sabores.ts.
+// As fotos são as do próprio sabor lá no data/sabores.ts: foto (a grande) e fotoCard (a do quadradinho).
 export function Destaque() {
   const destaque = comFoto(saborDestaque());
   const linha = buscarLinha(destaque.linha);
@@ -88,16 +89,21 @@ export function Destaque() {
             <IconHeart className={styles.carimboCoracao} />
           </span>
 
-          {/* card do mesmo sabor da foto: selo "mais pedido" no lugar de repetir a foto */}
+          {/* card do mesmo sabor da foto. Quadradinho: a fotoCard do sabor, ou um brilho se não tiver */}
           <div className={styles.cartao}>
-            <Image
-              src="/sabores/ninho-com-nutella2.jpeg"
-              alt=""
-              width={80}
-              height={80}
-              className={styles.cartaoSelo}
-              style={{ objectFit: "cover" }}
-            />
+            {destaque.fotoCard ? (
+              <Image
+                src={destaque.fotoCard}
+                alt=""
+                width={80}
+                height={80}
+                className={styles.cartaoSelo}
+              />
+            ) : (
+              <span className={styles.cartaoSelo} aria-hidden="true">
+                <IconSparkles size={26} />
+              </span>
+            )}
             <div className={styles.cartaoInfo}>
               <small>O mais pedido</small>
               <strong>{destaque.nome}</strong>
