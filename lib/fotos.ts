@@ -9,7 +9,7 @@ import type { Sabor } from "@/data/sabores";
 
 export type SaborComFoto = Sabor;
 
-function prepararCaminho(caminho: string | undefined, nome: string): string | undefined {
+export function prepararCaminho(caminho: string | undefined, nome: string): string | undefined {
   if (!caminho) return undefined;
   const limpo = "/" + caminho.replaceAll("\\", "/").replace(/^\/+/, "").replace(/^public\//, "");
   if (!fs.existsSync(path.join(process.cwd(), "public", limpo))) {

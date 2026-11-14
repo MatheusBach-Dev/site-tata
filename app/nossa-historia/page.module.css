@@ -1,0 +1,239 @@
+/* ---------- História ---------- */
+.historia {
+  background: var(--rosa-claro);
+  padding: 96px 0;
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 88px;
+  align-items: center;
+}
+
+.moldura {
+  position: relative;
+  width: 330px;
+  height: 460px;
+}
+
+.tracejado {
+  position: absolute;
+  inset: 26px -26px -26px 26px;
+  border: 2px dashed var(--rosa);
+  border-radius: 165px 165px 28px 28px;
+}
+
+.foto {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 165px 165px 28px 28px;
+  background: var(--areia);
+  box-shadow: 0 24px 48px -24px rgba(75, 29, 35, 0.45);
+}
+.foto img {
+  object-fit: cover;
+}
+
+.semFoto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 100%;
+  color: var(--rosa);
+  font-family: var(--fonte-script);
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.anos {
+  position: absolute;
+  right: -30px;
+  bottom: -18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 112px;
+  height: 112px;
+  padding: 0 18px;
+  border-radius: 50%;
+  background: var(--vinho);
+  color: var(--branco);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+  box-shadow: 0 12px 24px -12px rgba(75, 29, 35, 0.6);
+}
+.anos strong {
+  font-family: var(--fonte-titulo);
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--mostarda);
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  color: var(--texto);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.chamada {
+  font-family: var(--fonte-script);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--rosa);
+}
+
+.titulo {
+  margin-top: -6px;
+  font-size: clamp(34px, 4.2vw, 46px);
+  font-weight: 800;
+  line-height: 1.08;
+  color: var(--vinho);
+}
+
+.destaque {
+  font-weight: 600;
+}
+
+.citacao {
+  margin: 8px 0 0;
+  padding: 26px 30px;
+  background: var(--branco);
+  border-left: 4px solid var(--rosa);
+  border-radius: 20px;
+}
+.citacao p {
+  font-family: var(--fonte-titulo);
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--vinho);
+}
+.citacao cite {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--fonte-script);
+  font-size: 26px;
+  font-style: normal;
+  color: var(--vinho);
+}
+
+/* ---------- Instagram ---------- */
+.insta {
+  background: var(--branco);
+  padding: 80px 0 88px;
+}
+
+.instaTopo {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.instaTitulo {
+  font-size: clamp(30px, 3.6vw, 40px);
+  font-weight: 800;
+  color: var(--vinho);
+  overflow-wrap: anywhere;
+}
+
+.instaTexto {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--texto-suave);
+}
+
+.seguir {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  background: var(--rosa);
+  color: var(--branco);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.seguir:hover {
+  background: var(--rosa-escuro);
+}
+
+.instaFotos {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.instaFoto {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 14px;
+}
+.instaFoto img {
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.instaFoto:hover img {
+  transform: scale(1.05);
+}
+
+/* ---------- Celular ---------- */
+@media (max-width: 860px) {
+  .historia {
+    padding: 56px 0 72px;
+  }
+  .grade {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 56px;
+  }
+  .moldura {
+    width: min(280px, 74vw);
+    height: min(390px, 103vw);
+  }
+  .tracejado {
+    inset: 18px -18px -18px 18px;
+  }
+  .anos {
+    right: -16px;
+    width: 96px;
+    height: 96px;
+  }
+  .anos strong {
+    font-size: 34px;
+  }
+  .instaTopo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .instaFotos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .citacao {
+    padding: 20px 22px;
+  }
+  .citacao p {
+    font-size: 18px;
+  }
+}

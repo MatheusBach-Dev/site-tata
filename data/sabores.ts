@@ -46,6 +46,7 @@ export const sabores: Sabor[] = [
   },
   {
     slug: "ninho-com-frutas-vermelhas",
+    foto: "public/sabores/ninho-com-frutas-vermelhas.jpg",
     nome: "Ninho com Frutas Vermelhas",
     apelido: "docinho com azedinho",
     linha: "gourmet",
@@ -57,6 +58,7 @@ export const sabores: Sabor[] = [
   },
   {
     slug: "amendoim-torrado",
+    foto: "public/sabores/amendoim-torrado.jpg",
     nome: "Amendoim Torrado",
     apelido: "festa junina o ano todo",
     linha: "gourmet",
@@ -66,6 +68,7 @@ export const sabores: Sabor[] = [
   },
   {
     slug: "pacoca-com-nutella",
+    foto: "public/sabores/pacoca-com-nutella.jpg",
     nome: "Paçoca com Nutella",
     apelido: "pra quem é formiguinha",
     linha: "gourmet",
@@ -73,10 +76,11 @@ export const sabores: Sabor[] = [
     maisPedido: false,
     esgotado: false,
   },
-  { slug: "coco-queimado", nome: "Coco Queimado", linha: "gourmet", maisPedido: false, esgotado: false },
-  { slug: "cocada", nome: "Cocada", linha: "gourmet", maisPedido: false, esgotado: false },
+  { slug: "coco-queimado", foto: "public/sabores/coco-queimado.jpg", nome: "Coco Queimado", linha: "gourmet", maisPedido: false, esgotado: false },
+  { slug: "cocada", foto: "public/sabores/cocada.jpg", nome: "Cocada", linha: "gourmet", maisPedido: false, esgotado: false },
   {
     slug: "delicia-de-abacaxi",
+    foto: "public/sabores/delicia-de-abacaxi.jpg",
     nome: "Delícia de Abacaxi",
     apelido: "refrescância pura",
     linha: "gourmet",
@@ -86,6 +90,7 @@ export const sabores: Sabor[] = [
   },
   {
     slug: "pudim",
+    foto: "public/sabores/pudim.jpg",
     nome: "Pudim",
     apelido: "gostinho de casa de vó",
     linha: "gourmet",
@@ -95,6 +100,7 @@ export const sabores: Sabor[] = [
   },
   {
     slug: "romeu-e-julieta",
+    foto: "public/sabores/romeu-e-julieta.jpg",
     nome: "Romeu e Julieta",
     apelido: "clássico mineiro",
     linha: "gourmet",
@@ -105,6 +111,7 @@ export const sabores: Sabor[] = [
   { slug: "mousse-de-limao", nome: "Mousse de Limão", apelido: "azedinho que refresca", linha: "gourmet", maisPedido: false, esgotado: false },
   {
     slug: "mousse-de-maracuja",
+    foto: "public/sabores/mousse-de-maracuja.jpg",
     nome: "Mousse de Maracujá",
     apelido: "azedinho na medida",
     linha: "gourmet",
@@ -112,20 +119,21 @@ export const sabores: Sabor[] = [
     maisPedido: false,
     esgotado: false,
   },
-  { slug: "acai-com-leite-ninho", nome: "Açaí com Leite Ninho", linha: "gourmet", maisPedido: false, esgotado: false },
-  { slug: "brigadeiro", nome: "Brigadeiro", apelido: "festa de criança", linha: "gourmet", maisPedido: false, esgotado: false },
+  { slug: "acai-com-leite-ninho", foto: "public/sabores/acai-com-leite-ninho.jpg", nome: "Açaí com Leite Ninho", linha: "gourmet", maisPedido: false, esgotado: false },
+  { slug: "brigadeiro", foto: "public/sabores/brigadeiro.jpg", nome: "Brigadeiro", apelido: "festa de criança", linha: "gourmet", maisPedido: false, esgotado: false },
   { slug: "caipirinha", nome: "Caipirinha", linha: "gourmet", maisPedido: false, esgotado: false },
-  { slug: "ninho-com-morango", nome: "Ninho com Morango", linha: "gourmet", maisPedido: false, esgotado: false },
+  { slug: "ninho-com-morango", foto: "public/sabores/ninho-com-morango.jpg", nome: "Ninho com Morango", linha: "gourmet", maisPedido: false, esgotado: false },
 
   // 🍫 Chup-chup Gourmet com casquinha de chocolate — R$ 10,00
-  { slug: "prestigio", nome: "Prestígio", apelido: "coco com chocolate", linha: "casquinha", maisPedido: false, esgotado: false },
-  { slug: "cafe-com-chocolate", nome: "Café com Chocolate", linha: "casquinha", maisPedido: false, esgotado: false },
-  { slug: "ninho-trufado", nome: "Ninho Trufado", linha: "casquinha", maisPedido: false, esgotado: false },
+  { slug: "prestigio", foto: "public/sabores/prestigio.jpg", nome: "Prestígio", apelido: "coco com chocolate", linha: "casquinha", maisPedido: false, esgotado: false },
+  { slug: "cafe-com-chocolate", foto: "public/sabores/cafe-com-chocolate.jpg", nome: "Café com Chocolate", linha: "casquinha", maisPedido: false, esgotado: false },
+  { slug: "ninho-trufado", foto: "public/sabores/ninho-trufado.jpg", nome: "Ninho Trufado", linha: "casquinha", maisPedido: false, esgotado: false },
 
   // ✨ Linha Premium — R$ 11,00
   { slug: "torta-de-limao", nome: "Torta de Limão", apelido: "sobremesa de domingo", linha: "premium", maisPedido: false, esgotado: false },
   {
     slug: "cheesecake-de-frutas-vermelhas",
+    foto: "public/sabores/cheesecake-de-frutas-vermelhas.jpg",
     nome: "Cheesecake de Frutas Vermelhas",
     linha: "premium",
     maisPedido: false,
@@ -133,13 +141,13 @@ export const sabores: Sabor[] = [
   },
 
   // 🌈 Chup-chup Cremoso — R$ 4,50
-  { slug: "cremoso-chocolate", nome: "Chocolate", linha: "cremoso", maisPedido: false, esgotado: false },
-  { slug: "cremoso-morango", nome: "Morango", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-chocolate", foto: "public/sabores/cremoso-chocolate.jpg", nome: "Chocolate", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-morango", foto: "public/sabores/cremoso-morango.jpg", nome: "Morango", linha: "cremoso", maisPedido: false, esgotado: false },
   { slug: "cremoso-menta", nome: "Menta", linha: "cremoso", maisPedido: false, esgotado: false },
-  // esgotado: true só para testar como fica. Troque para false quando quiser.
+  // Milho Verde está esgotado de verdade na loja. Quando voltar, troque esgotado para false.
   { slug: "cremoso-milho-verde", nome: "Milho Verde", linha: "cremoso", maisPedido: false, esgotado: true },
-  { slug: "cremoso-creme-de-ovos", nome: "Creme de Ovos", linha: "cremoso", maisPedido: false, esgotado: false },
-  { slug: "cremoso-maracuja", nome: "Maracujá", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-creme-de-ovos", foto: "public/sabores/cremoso-creme-de-ovos.jpg", nome: "Creme de Ovos", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-maracuja", foto: "public/sabores/cremoso-maracuja.jpg", nome: "Maracujá", linha: "cremoso", maisPedido: false, esgotado: false },
   { slug: "cremoso-blue-ice", nome: "Blue Ice", linha: "cremoso", maisPedido: false, esgotado: false },
   { slug: "cremoso-leite-condensado", nome: "Leite Condensado", linha: "cremoso", maisPedido: false, esgotado: false },
   { slug: "cremoso-kiwi", nome: "Kiwi", linha: "cremoso", maisPedido: false, esgotado: false },
