@@ -102,6 +102,7 @@ export default async function PaginaSabor({ params }: PageProps<"/sabores/[slug]
                 </span>
               )}
               {sabor.esgotado && <span className={styles.avisoEsgotado}>Produto esgotado</span>}
+              {sabor.creditoFoto && <small className={styles.credito}>{sabor.creditoFoto}</small>}
             </div>
 
             <div className={styles.info}>

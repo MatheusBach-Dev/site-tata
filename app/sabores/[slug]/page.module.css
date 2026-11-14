@@ -127,6 +127,17 @@
   box-shadow: 0 18px 40px -16px rgba(75, 29, 35, 0.35);
 }
 
+/* crédito de foto que não é da Tatá (licença pede o nome do autor) */
+.credito {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -22px;
+  font-size: 11px;
+  text-align: center;
+  color: var(--texto-suave);
+}
+
 .seloPeso {
   position: absolute;
   top: 4%;
