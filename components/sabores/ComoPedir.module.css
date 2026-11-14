@@ -9,6 +9,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
+/* só um app com link (ex.: só iFood): o botão ocupa a linha toda */
+.apps > :only-child {
+  grid-column: 1 / -1;
+}
 
 .opcao {
   display: flex;
