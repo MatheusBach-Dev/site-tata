@@ -108,7 +108,7 @@ export const sabores: Sabor[] = [
     maisPedido: false,
     esgotado: false,
   },
-  { slug: "mousse-de-limao", nome: "Mousse de Limão", apelido: "azedinho que refresca", linha: "gourmet", maisPedido: false, esgotado: false },
+  { slug: "mousse-de-limao", foto: "public/sabores/mousse-de-limao.jpg", nome: "Mousse de Limão", apelido: "azedinho que refresca", linha: "gourmet", maisPedido: false, esgotado: false },
   {
     slug: "mousse-de-maracuja",
     foto: "public/sabores/mousse-de-maracuja.jpg",
@@ -121,7 +121,7 @@ export const sabores: Sabor[] = [
   },
   { slug: "acai-com-leite-ninho", foto: "public/sabores/acai-com-leite-ninho.jpg", nome: "Açaí com Leite Ninho", linha: "gourmet", maisPedido: false, esgotado: false },
   { slug: "brigadeiro", foto: "public/sabores/brigadeiro.jpg", nome: "Brigadeiro", apelido: "festa de criança", linha: "gourmet", maisPedido: false, esgotado: false },
-  { slug: "caipirinha", nome: "Caipirinha", linha: "gourmet", maisPedido: false, esgotado: false },
+  { slug: "caipirinha", foto: "public/sabores/caipirinha.jpg", nome: "Caipirinha", linha: "gourmet", maisPedido: false, esgotado: false },
   { slug: "ninho-com-morango", foto: "public/sabores/ninho-com-morango.jpg", nome: "Ninho com Morango", linha: "gourmet", maisPedido: false, esgotado: false },
 
   // 🍫 Chup-chup Gourmet com casquinha de chocolate — R$ 10,00
@@ -130,7 +130,7 @@ export const sabores: Sabor[] = [
   { slug: "ninho-trufado", foto: "public/sabores/ninho-trufado.jpg", nome: "Ninho Trufado", linha: "casquinha", maisPedido: false, esgotado: false },
 
   // ✨ Linha Premium — R$ 11,00
-  { slug: "torta-de-limao", nome: "Torta de Limão", apelido: "sobremesa de domingo", linha: "premium", maisPedido: false, esgotado: false },
+  { slug: "torta-de-limao", foto: "public/sabores/torta-de-limao.jpg", nome: "Torta de Limão", apelido: "sobremesa de domingo", linha: "premium", maisPedido: false, esgotado: false },
   {
     slug: "cheesecake-de-frutas-vermelhas",
     foto: "public/sabores/cheesecake-de-frutas-vermelhas.jpg",
@@ -143,16 +143,16 @@ export const sabores: Sabor[] = [
   // 🌈 Chup-chup Cremoso — R$ 4,50
   { slug: "cremoso-chocolate", foto: "public/sabores/cremoso-chocolate.jpg", nome: "Chocolate", linha: "cremoso", maisPedido: false, esgotado: false },
   { slug: "cremoso-morango", foto: "public/sabores/cremoso-morango.jpg", nome: "Morango", linha: "cremoso", maisPedido: false, esgotado: false },
-  { slug: "cremoso-menta", nome: "Menta", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-menta", foto: "public/sabores/cremoso-menta.jpg", nome: "Menta", linha: "cremoso", maisPedido: false, esgotado: false },
   // Milho Verde está esgotado de verdade na loja. Quando voltar, troque esgotado para false.
-  { slug: "cremoso-milho-verde", nome: "Milho Verde", linha: "cremoso", maisPedido: false, esgotado: true },
+  { slug: "cremoso-milho-verde", foto: "public/sabores/cremoso-milho-verde.jpg", nome: "Milho Verde", linha: "cremoso", maisPedido: false, esgotado: true },
   { slug: "cremoso-creme-de-ovos", foto: "public/sabores/cremoso-creme-de-ovos.jpg", nome: "Creme de Ovos", linha: "cremoso", maisPedido: false, esgotado: false },
   { slug: "cremoso-maracuja", foto: "public/sabores/cremoso-maracuja.jpg", nome: "Maracujá", linha: "cremoso", maisPedido: false, esgotado: false },
-  { slug: "cremoso-blue-ice", nome: "Blue Ice", linha: "cremoso", maisPedido: false, esgotado: false },
-  { slug: "cremoso-leite-condensado", nome: "Leite Condensado", linha: "cremoso", maisPedido: false, esgotado: false },
-  { slug: "cremoso-kiwi", nome: "Kiwi", linha: "cremoso", maisPedido: false, esgotado: false },
-  { slug: "cremoso-uva", nome: "Uva", linha: "cremoso", maisPedido: false, esgotado: false },
-  { slug: "cremoso-limao", nome: "Limão", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-blue-ice", foto: "public/sabores/cremoso-blue-ice.jpg", nome: "Blue Ice", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-leite-condensado", foto: "public/sabores/cremoso-leite-condensado.jpg", nome: "Leite Condensado", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-kiwi", foto: "public/sabores/cremoso-kiwi.jpg", nome: "Kiwi", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-uva", foto: "public/sabores/cremoso-uva.jpg", nome: "Uva", linha: "cremoso", maisPedido: false, esgotado: false },
+  { slug: "cremoso-limao", foto: "public/sabores/cremoso-limao.jpg", nome: "Limão", linha: "cremoso", maisPedido: false, esgotado: false },
 ];
 
 /** Sabor do topo da home: o primeiro com maisPedido: true (se nenhum tiver, o primeiro da lista). */
