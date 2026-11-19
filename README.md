@@ -28,6 +28,9 @@ Abra http://localhost:3000.
 | Página Início | `app/page.tsx` e `components/home/` |
 | Faixa de cima, cabeçalho, rodapé | `components/FaixaInfo.tsx`, `Cabecalho.tsx`, `Rodape.tsx` |
 | Janela de pedido do WhatsApp | `components/Pedido.tsx` |
+| Pontos de revenda (nome, endereço, tipo e coordenadas) | `data/pontos.ts` |
+| Posição da loja no mapa | `data/loja.ts` (`coordenadas`) |
+| Página Onde Encontrar (mapa e buscador) | `app/onde-encontrar/` e `components/onde-encontrar/` |
 
 ## Fotos e logo
 
@@ -38,12 +41,20 @@ Abra http://localhost:3000.
 - **Esgotado:** `esgotado: true` deixa a foto apagada e sem cor.
 - **Logo:** coloque em `public/logo.png` e siga o comentário em `components/Logo.tsx`.
 
+## Testes
+
+```bash
+npm test
+```
+
+Confere as funções do mapa e os dados de `data/pontos.ts` (avisa se alguma coordenada estiver fora do Brasil, id repetido ou tipo errado). Rode depois de colocar os pontos reais.
+
 ## Status
 
 - [x] 1. Início (desktop e celular)
 - [x] 2. Sabores (lista com filtros por linha + página de cada sabor em `/sabores/<slug>`)
-- [ ] 3. Nossa História
-- [ ] 4. Onde Encontrar
+- [x] 3. Nossa História
+- [x] 4. Onde Encontrar (loja + buscador de pontos de revenda com mapa; pontos ainda fictícios)
 - [ ] 5. Seja Revendedor
 
 As páginas que faltam mostram por enquanto a tela "Esta página ainda está no forno".

@@ -254,8 +254,32 @@
   }
 }
 
+@media (max-width: 760px) {
+  /* Tipos numa fileira que rola para o lado (igual aos filtros da página Sabores) */
+  .tipos {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 0 calc(var(--margem-lateral) * -1);
+    padding: 0 var(--margem-lateral) 4px;
+    scrollbar-width: none;
+  }
+  .tipo {
+    flex-shrink: 0;
+  }
+}
+
 @media (max-width: 520px) {
   .controles {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .pertoDeMim {
+    gap: 6px;
+    padding: 0 12px;
+    font-size: 14px;
+  }
+  .cidade select {
+    padding: 0 30px 0 12px;
+    font-size: 14px;
+    background-position: right 10px center;
   }
 }
