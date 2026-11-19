@@ -1,0 +1,57 @@
+.fundo {
+  background: var(--fundo);
+  padding: 64px 0 80px;
+}
+
+.topo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.chamada {
+  font-family: var(--fonte-script);
+  font-weight: 600;
+  font-size: 30px;
+  color: var(--rosa);
+}
+
+.titulo {
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 800;
+}
+
+.texto {
+  max-width: 620px;
+  margin-top: 14px;
+  font-size: 18px;
+  color: var(--texto-suave);
+}
+
+/* Cards "Nossa loja" e "Pontos de revenda" lado a lado; um embaixo do outro no celular */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (max-width: 860px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .fundo {
+    padding: 40px 0 56px;
+  }
+  .chamada {
+    font-size: 24px;
+  }
+  .texto {
+    font-size: 16px;
+  }
+}

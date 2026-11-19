@@ -1,0 +1,107 @@
+.regiao {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--areia);
+}
+
+.mapa {
+  width: 100%;
+  height: 100%;
+  background: var(--areia);
+  font-family: var(--fonte-texto);
+}
+
+/* Fundo enquanto o mapa carrega */
+.carregando {
+  width: 100%;
+  height: 100%;
+  background: var(--areia);
+}
+
+/* Pinos (o Leaflet coloca um fundo branco padrão nos ícones; aqui tiramos) */
+.pino {
+  background: transparent;
+  border: 0;
+}
+.pino svg {
+  display: block;
+  filter: drop-shadow(0 4px 6px rgba(75, 29, 35, 0.35));
+}
+
+.pinoLoja {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--mostarda);
+  border: 3px solid var(--branco);
+  box-shadow: 0 0 0 2px var(--vinho), 0 8px 16px -6px rgba(75, 29, 35, 0.6);
+}
+.pinoLoja img {
+  border-radius: 50%;
+}
+
+/* Etiqueta fixa "Gostosuras da Tatá" embaixo do pino da loja
+   (com .regiao na frente para ganhar do estilo padrão do Leaflet) */
+.regiao .etiquetaLoja {
+  padding: 4px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--vinho);
+  color: var(--branco);
+  font-family: var(--fonte-texto);
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: none;
+}
+.regiao .etiquetaLoja::before {
+  display: none;
+}
+
+/* "Você está aqui" */
+.voce {
+  fill: var(--rosa);
+  fill-opacity: 0.9;
+  stroke: var(--branco);
+  stroke-width: 3;
+}
+
+/* Balão do pino */
+.balao {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 180px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--texto);
+}
+.balao strong {
+  font-family: var(--fonte-titulo);
+  font-size: 16px;
+  color: var(--vinho);
+}
+.balao a {
+  font-weight: 600;
+  color: var(--verde-zap);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Bolinhas de agrupamento nas cores da Tatá */
+.regiao :global(.marker-cluster-small),
+.regiao :global(.marker-cluster-medium),
+.regiao :global(.marker-cluster-large) {
+  background-color: rgba(180, 90, 106, 0.35);
+}
+.regiao :global(.marker-cluster-small div),
+.regiao :global(.marker-cluster-medium div),
+.regiao :global(.marker-cluster-large div) {
+  background-color: var(--vinho);
+  color: var(--branco);
+  font-family: var(--fonte-texto);
+  font-weight: 600;
+}
