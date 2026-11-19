@@ -1,0 +1,285 @@
+.buscador {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Busca, cidade e "Perto de mim" */
+.controles {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px auto;
+  gap: 10px;
+}
+
+.busca,
+.cidade select,
+.pertoDeMim {
+  min-height: 50px;
+  border: 1.5px solid var(--linha);
+  border-radius: 14px;
+  background: var(--branco);
+  color: var(--texto);
+  font: inherit;
+  font-size: 15px;
+}
+
+.busca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  color: var(--texto-suave);
+}
+.busca input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--texto);
+  font: inherit;
+  outline: none;
+}
+.busca:focus-within,
+.cidade select:focus-visible {
+  border-color: var(--vinho);
+  outline: none;
+}
+
+.cidade select {
+  width: 100%;
+  padding: 0 40px 0 14px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237a2e37' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+}
+
+.pertoDeMim {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 18px;
+  color: var(--vinho);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.pertoDeMim:hover {
+  border-color: var(--vinho);
+}
+.pertoDeMim:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+.pertoDeMimAtivo {
+  border-color: var(--verde-zap);
+  background: var(--verde-zap);
+  color: var(--branco);
+}
+
+/* Chips de tipo */
+.tipos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tipo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  background: var(--rosa-claro);
+  color: var(--vinho);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tipo:hover {
+  border-color: var(--vinho);
+}
+.tipoAtivo {
+  background: var(--vinho);
+  color: var(--branco);
+}
+
+/* "7 pontos em Contagem" + Limpar filtros */
+.resumo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-size: 15px;
+  color: var(--texto-suave);
+}
+.limpar {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--vinho);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.erroLocalizacao:empty {
+  display: none;
+}
+.erroLocalizacao {
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--mostarda-claro);
+  color: var(--texto);
+  font-size: 14px;
+}
+
+/* Abas Lista | Mapa (só no celular) */
+.abas {
+  display: none;
+}
+
+/* Lista à esquerda e mapa à direita */
+.resultado {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: 20px;
+  height: 640px;
+}
+
+.lista {
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.itens {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.verMais {
+  width: 100%;
+  margin-top: 12px;
+  min-height: 48px;
+  border: 1.5px dashed var(--vinho);
+  border-radius: 14px;
+  background: transparent;
+  color: var(--vinho);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 24px;
+  border: 1.5px dashed var(--linha);
+  border-radius: 20px;
+  background: var(--branco);
+}
+.vazio p {
+  font-weight: 600;
+}
+
+.mapa {
+  overflow: hidden;
+  border: 1px solid var(--linha);
+  border-radius: 24px;
+}
+
+@media (max-width: 959px) {
+  .controles {
+    grid-template-columns: 1fr 1fr;
+  }
+  .busca {
+    grid-column: 1 / -1;
+  }
+
+  .abas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4px;
+    border-radius: 14px;
+    background: var(--areia);
+  }
+  .abas button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--texto-suave);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .abas button[aria-selected="true"] {
+    background: var(--branco);
+    color: var(--vinho);
+    box-shadow: 0 2px 8px -4px rgba(75, 29, 35, 0.4);
+  }
+
+  .resultado {
+    display: block;
+    height: auto;
+  }
+  .lista {
+    overflow: visible;
+    padding-right: 0;
+  }
+  .mapa {
+    height: 70vh;
+    min-height: 380px;
+  }
+  .resultado[data-aba="lista"] .mapa,
+  .resultado[data-aba="mapa"] .lista {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  /* Tipos numa fileira que rola para o lado (igual aos filtros da página Sabores) */
+  .tipos {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 0 calc(var(--margem-lateral) * -1);
+    padding: 0 var(--margem-lateral) 4px;
+    scrollbar-width: none;
+  }
+  .tipo {
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .controles {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .pertoDeMim {
+    gap: 6px;
+    padding: 0 12px;
+    font-size: 14px;
+  }
+  .cidade select {
+    padding: 0 30px 0 12px;
+    font-size: 14px;
+    background-position: right 10px center;
+  }
+}

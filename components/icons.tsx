@@ -151,3 +151,112 @@ export function IconMessage(props: IconProps) {
     </Stroke>
   );
 }
+
+// Ícones da página Onde Encontrar (tipos de comércio, busca, localização, abas)
+export function IconUtensils(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+      <path d="M7 2v20" />
+      <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
+    </Stroke>
+  );
+}
+
+export function IconPill(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z" />
+      <path d="m8.5 8.5 7 7" />
+    </Stroke>
+  );
+}
+
+export function IconCoffee(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="M10 2v2" />
+      <path d="M14 2v2" />
+      <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1" />
+      <path d="M6 2v2" />
+    </Stroke>
+  );
+}
+
+export function IconCart(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <circle cx="8" cy="21" r="1" />
+      <circle cx="19" cy="21" r="1" />
+      <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+    </Stroke>
+  );
+}
+
+export function IconCroissant(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="m4.6 13.11 5.79-3.21c1.89-1.05 4.79 1.78 3.71 3.71l-3.22 5.81C8.8 23.16.79 15.23 4.6 13.11Z" />
+      <path d="m10.5 9.5-1-2.29C9.2 6.48 8.8 6 8 6H4.5C2.79 6 2 6.5 2 8.5a7.71 7.71 0 0 0 2 4.83" />
+      <path d="M8 6c0-1.55.24-4-2-4-2 0-2.5 2.17-2.5 4" />
+      <path d="m14.5 13.5 2.29 1c.73.3 1.21.7 1.21 1.5v3.5c0 1.71-.5 2.5-2.5 2.5a7.71 7.71 0 0 1-4.83-2" />
+      <path d="M18 16c1.55 0 4-.24 4 2 0 2-2.17 2.5-4 2.5" />
+    </Stroke>
+  );
+}
+
+export function IconStore(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7" />
+      <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+      <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4" />
+      <path d="M2 7h20" />
+    </Stroke>
+  );
+}
+
+export function IconSearch(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.3-4.3" />
+    </Stroke>
+  );
+}
+
+export function IconLocate(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <line x1="2" x2="5" y1="12" y2="12" />
+      <line x1="19" x2="22" y1="12" y2="12" />
+      <line x1="12" x2="12" y1="2" y2="5" />
+      <line x1="12" x2="12" y1="19" y2="22" />
+      <circle cx="12" cy="12" r="7" />
+      <circle cx="12" cy="12" r="3" />
+    </Stroke>
+  );
+}
+
+export function IconList(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="M3 6h.01" />
+      <path d="M3 12h.01" />
+      <path d="M3 18h.01" />
+      <path d="M8 6h13" />
+      <path d="M8 12h13" />
+      <path d="M8 18h13" />
+    </Stroke>
+  );
+}
+
+export function IconMap(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z" />
+      <path d="M15 5.764v15" />
+      <path d="M9 3.236v15" />
+    </Stroke>
+  );
+}
