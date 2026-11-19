@@ -28,6 +28,11 @@ export const loja = {
     cidade: "Contagem/MG",
   },
 
+  // Posição da loja no mapa da página Onde Encontrar.
+  // APROXIMADAS: trocar pelas do link do Google Maps da loja
+  // (botão direito no lugar → clique nos números para copiar; o 1º é lat, o 2º é lng).
+  coordenadas: { lat: -19.9218, lng: -44.0495 },
+
   horarios: {
     curto: "Seg a Sex 11h às 19h  •  Sábado 11h às 18h",
     semana: "Segunda a sexta: 11h às 19h",

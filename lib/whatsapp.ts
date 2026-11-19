@@ -12,4 +12,5 @@ export const mensagens = {
   sabor: (nome: string, linha?: string) =>
     `Oi, Tatá! Vim pelo site e quero pedir: 1x ${nome}${linha ? ` (${linha})` : ""}. Vou retirar na loja!`,
   duvida: "Oi, Tatá! Vim pelo site e queria tirar uma dúvida sobre os sabores.",
+  pontoMaisPerto: "Oi, Tatá! Vim pelo site e queria saber qual o ponto de revenda mais perto de mim.",
 };
