@@ -45,12 +45,20 @@ export function tiposPresentes(pontos: Ponto[]): TipoPonto[] {
   return (Object.keys(tiposPonto) as TipoPonto[]).filter((t) => presentes.has(t));
 }
 
+/**
+ * Busca em nome, bairro, cidade e tipo. Cada palavra digitada precisa aparecer,
+ * em qualquer ordem: "padaria eldorado" e "eldorado padaria" acham o mesmo ponto.
+ */
 export function filtrarPontos(pontos: Ponto[], filtros: Filtros): Ponto[] {
-  const busca = semAcento(filtros.busca);
+  const palavras = semAcento(filtros.busca).split(/\s+/).filter(Boolean);
   return pontos.filter((p) => {
     if (filtros.cidade && chaveCidade(p) !== filtros.cidade) return false;
     if (filtros.tipos.length > 0 && !filtros.tipos.includes(p.tipo)) return false;
-    if (busca && !semAcento(`${p.nome} ${p.bairro} ${p.cidade}`).includes(busca)) return false;
+    if (palavras.length > 0) {
+      const tipo = tiposPonto[p.tipo];
+      const texto = semAcento(`${p.nome} ${p.bairro} ${p.cidade} ${tipo.rotulo} ${tipo.plural}`);
+      if (!palavras.every((palavra) => texto.includes(palavra))) return false;
+    }
     return true;
   });
 }

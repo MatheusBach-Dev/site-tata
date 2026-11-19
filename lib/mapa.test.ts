@@ -73,6 +73,17 @@ describe("filtrarPontos", () => {
     expect(filtrarPontos(lista, { ...semFiltro, cidade: "Santa Luzia|PB" }).map((p) => p.id)).toEqual(["b"]);
   });
 
+  it("busca por várias palavras em qualquer ordem", () => {
+    expect(filtrarPontos(lista, { ...semFiltro, busca: "padaria centro" }).map((p) => p.id)).toEqual(["a"]);
+    expect(filtrarPontos(lista, { ...semFiltro, busca: "contagem conceição" }).map((p) => p.id)).toEqual(["c"]);
+    expect(filtrarPontos(lista, { ...semFiltro, busca: "conceicao contagem" }).map((p) => p.id)).toEqual(["c"]);
+  });
+
+  it("busca também acha pelo tipo (Drogaria com tipo farmácia aparece em 'farmacia')", () => {
+    const comDrogaria: Ponto[] = [...lista, { ...lista[1], id: "e", nome: "Drogaria Popular", estado: "MG" }];
+    expect(filtrarPontos(comDrogaria, { ...semFiltro, busca: "farmacia" }).map((p) => p.id).sort()).toEqual(["b", "e"]);
+  });
+
   it("vários tipos ao mesmo tempo", () => {
     const ids = filtrarPontos(lista, { ...semFiltro, tipos: ["farmacia", "padaria"] }).map((p) => p.id);
     expect(ids.sort()).toEqual(["a", "b"]);

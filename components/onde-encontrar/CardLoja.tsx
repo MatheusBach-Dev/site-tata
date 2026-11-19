@@ -19,6 +19,7 @@ export function CardLoja() {
               id: "loja",
               lat: loja.coordenadas.lat,
               lng: loja.coordenadas.lng,
+              posicao: [loja.coordenadas.lat, loja.coordenadas.lng],
               titulo: loja.nome,
               subtitulo: enderecoCompleto,
             },
