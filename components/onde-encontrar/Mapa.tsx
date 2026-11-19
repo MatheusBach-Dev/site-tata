@@ -55,16 +55,34 @@ const pinoLoja = L.divIcon({
   popupAnchor: [0, -52],
 });
 
-/** Ajusta o zoom para caber todos os pinos (1 pino = zoom de rua). */
-function AjustarVisao({ pinos }: { pinos: PinoMapa[] }) {
+/**
+ * Ajusta o zoom para caber todos os pinos (1 pino = zoom de rua).
+ * Se o mapa estiver escondido (aba "Lista" no celular), espera ele aparecer para ajustar.
+ * Com um ponto escolhido, quem manda na visão é o FocarSelecionado.
+ */
+function AjustarVisao({ pinos, selecionado }: { pinos: PinoMapa[]; selecionado?: string | null }) {
   const map = useMap();
+  const temSelecao = useRef(Boolean(selecionado));
   useEffect(() => {
-    if (pinos.length === 0) return;
-    if (pinos.length === 1) {
-      map.setView([pinos[0].lat, pinos[0].lng], 16);
-      return;
-    }
-    map.fitBounds(L.latLngBounds(pinos.map((p) => [p.lat, p.lng])), { padding: [40, 40], maxZoom: 15 });
+    temSelecao.current = Boolean(selecionado);
+  }, [selecionado]);
+
+  useEffect(() => {
+    const ajustar = () => {
+      const tamanho = map.getSize();
+      if (tamanho.x === 0 || tamanho.y === 0) return false;
+      if (temSelecao.current || pinos.length === 0) return true;
+      if (pinos.length === 1) map.setView([pinos[0].lat, pinos[0].lng], 16);
+      else map.fitBounds(L.latLngBounds(pinos.map((p) => [p.lat, p.lng])), { padding: [40, 40], maxZoom: 15 });
+      return true;
+    };
+    let ajustado = ajustar();
+    const observador = new ResizeObserver(() => {
+      map.invalidateSize();
+      if (!ajustado) ajustado = ajustar();
+    });
+    observador.observe(map.getContainer());
+    return () => observador.disconnect();
   }, [map, pinos]);
   return null;
 }
@@ -84,6 +102,7 @@ function FocarSelecionado({
     if (!selecionado) return;
     const marcador = marcadores.current.get(selecionado);
     if (!marcador) return;
+    map.invalidateSize();
     const abrir = () => {
       map.flyTo(marcador.getLatLng(), Math.max(map.getZoom(), 16), { duration: 0.6 });
       marcador.openPopup();
@@ -148,7 +167,7 @@ export default function Mapa({ pinos, tipo, selecionado, onSelecionar, voce, cla
             <Tooltip direction="top">Você está aqui</Tooltip>
           </CircleMarker>
         )}
-        <AjustarVisao pinos={pinos} />
+        <AjustarVisao pinos={pinos} selecionado={selecionado} />
         <FocarSelecionado selecionado={selecionado} marcadores={marcadores} grupo={grupo} />
       </MapContainer>
     </div>

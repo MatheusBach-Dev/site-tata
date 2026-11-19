@@ -1,0 +1,58 @@
+.item {
+  padding: 18px 20px;
+  border: 1.5px solid var(--linha);
+  border-radius: 20px;
+  background: var(--branco);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.selecionado {
+  border-color: var(--vinho);
+  box-shadow: 0 0 0 3px var(--rosa-claro);
+}
+
+.topo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.nome {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.distancia {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--verde-zap);
+}
+
+.tipo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--rosa-claro);
+  color: var(--vinho);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.endereco {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--texto-suave);
+}
+
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}

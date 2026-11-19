@@ -38,6 +38,22 @@
   align-items: stretch;
 }
 
+/* Buscador de pontos de revenda */
+.pontos {
+  margin-top: 72px;
+  scroll-margin-top: 110px;
+}
+
+.tituloPontos {
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 800;
+}
+
+.textoPontos {
+  margin: 8px 0 22px;
+  color: var(--texto-suave);
+}
+
 @media (max-width: 860px) {
   .cards {
     grid-template-columns: 1fr;
