@@ -1,6 +1,6 @@
 .fundo {
   background: var(--fundo);
-  padding: 64px 0 80px;
+  padding: 64px 0 96px;
 }
 
 .topo {
@@ -14,7 +14,7 @@
 .chamada {
   font-family: var(--fonte-script);
   font-weight: 600;
-  font-size: 30px;
+  font-size: 26px;
   color: var(--rosa);
 }
 
@@ -30,42 +30,17 @@
   color: var(--texto-suave);
 }
 
-/* Cards "Nossa loja" e "Pontos de revenda" lado a lado; um embaixo do outro no celular */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  align-items: stretch;
-}
-
-/* Buscador de pontos de revenda */
+/* "Ver no mapa" e o botão do topo rolam até aqui; espaço para o cabeçalho fixo */
 .pontos {
-  margin-top: 72px;
   scroll-margin-top: 110px;
-}
-
-.tituloPontos {
-  font-size: clamp(28px, 3.4vw, 40px);
-  font-weight: 800;
-}
-
-.textoPontos {
-  margin: 8px 0 22px;
-  color: var(--texto-suave);
-}
-
-@media (max-width: 860px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 640px) {
   .fundo {
-    padding: 40px 0 56px;
+    padding: 40px 0 64px;
   }
   .chamada {
-    font-size: 24px;
+    font-size: 22px;
   }
   .texto {
     font-size: 16px;

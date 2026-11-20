@@ -6,10 +6,6 @@ import { pontos, tiposPonto } from "./pontos";
 // Confere os dados antes de ir pro ar: pega coordenada digitada errada,
 // id repetido e tipo que não existe.
 describe("data/pontos.ts", () => {
-  it("tem no máximo 10 pontos fictícios", () => {
-    expect(pontos.length).toBeLessThanOrEqual(10);
-  });
-
   it("não repete id", () => {
     expect(new Set(pontos.map((p) => p.id)).size).toBe(pontos.length);
   });

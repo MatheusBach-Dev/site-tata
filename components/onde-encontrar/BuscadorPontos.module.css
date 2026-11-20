@@ -70,7 +70,7 @@
 .pertoDeMim:hover {
   border-color: var(--vinho);
 }
-.pertoDeMim:disabled {
+.pertoDeMim[aria-disabled="true"] {
   cursor: wait;
   opacity: 0.7;
 }
@@ -128,9 +128,6 @@
   text-decoration: underline;
   text-underline-offset: 3px;
   cursor: pointer;
-}
-.erroLocalizacao:empty {
-  display: none;
 }
 .erroLocalizacao {
   padding: 10px 14px;
@@ -211,6 +208,8 @@
 
   .abas {
     display: grid;
+    /* "Ver no mapa" rola até aqui; espaço para o cabeçalho fixo */
+    scroll-margin-top: 88px;
     grid-template-columns: 1fr 1fr;
     padding: 4px;
     border-radius: 14px;

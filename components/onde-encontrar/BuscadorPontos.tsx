@@ -3,10 +3,12 @@
 // Buscador de pontos de revenda: busca, cidade, tipos, "Perto de mim", lista e mapa.
 // Feito para continuar simples com 10, 50 ou 200 pontos.
 
-import { useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { enderecoCompleto, loja } from "@/data/loja";
 import { tiposPonto, type Ponto, type TipoPonto } from "@/data/pontos";
 import {
   cidadesPorEstado,
+  distanciaKm,
   filtrarPontos,
   ordenarPorDistancia,
   tiposPresentes,
@@ -16,12 +18,25 @@ import {
 import { linkWhatsApp, mensagens } from "@/lib/whatsapp";
 import { Botao } from "../Botao";
 import { IconList, IconLocate, IconMap, IconSearch, IconWhatsApp } from "../icons";
+import { CardLojaDestaque } from "./CardLojaDestaque";
 import { IconeTipo } from "./IconeTipo";
 import { ItemPonto } from "./ItemPonto";
-import { MapaDinamico, type PinoMapa } from "./MapaDinamico";
+import { MapaDinamico, type FocoMapa, type PinoMapa } from "./MapaDinamico";
 import styles from "./BuscadorPontos.module.css";
 
 const POR_PAGINA = 12;
+/** Tempo máximo esperando a localização (inclui a pessoa não responder o pedido do navegador). */
+const ESPERA_LOCALIZACAO_MS = 10000;
+
+/** A loja da Tatá no mapa: pino com a logo, sempre visível e em destaque. */
+const PINO_LOJA: PinoMapa = {
+  id: "loja",
+  lat: loja.coordenadas.lat,
+  lng: loja.coordenadas.lng,
+  posicao: [loja.coordenadas.lat, loja.coordenadas.lng],
+  titulo: loja.nome,
+  subtitulo: enderecoCompleto,
+};
 const SEM_FILTROS: Filtros = { busca: "", cidade: "", tipos: [] };
 
 type Localizacao = { estado: "inativo" | "buscando" | "erro" } | { estado: "ok"; coords: Coordenada };
@@ -30,24 +45,37 @@ export function BuscadorPontos({ pontos }: { pontos: Ponto[] }) {
   const [filtros, setFiltros] = useState<Filtros>(SEM_FILTROS);
   const [limite, setLimite] = useState(POR_PAGINA);
   const [selecionado, setSelecionado] = useState<string | null>(null);
+  const [foco, setFoco] = useState<FocoMapa | null>(null);
   const [aba, setAba] = useState<"lista" | "mapa">("lista");
   const [localizacao, setLocalizacao] = useState<Localizacao>({ estado: "inativo" });
   const idCidade = useId();
+  const abasRef = useRef<HTMLDivElement>(null);
+  const esperaLocalizacao = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => clearTimeout(esperaLocalizacao.current ?? undefined), []);
 
   const grupos = useMemo(() => cidadesPorEstado(pontos), [pontos]);
   const tipos = useMemo(() => tiposPresentes(pontos), [pontos]);
   const filtrados = useMemo(() => filtrarPontos(pontos, filtros), [pontos, filtros]);
-  const pinos = useMemo<PinoMapa[]>(
+  // Um pino por ponto, criado uma vez só: o mapa não precisa redesenhar os pinos a cada clique.
+  const pinoPorId = useMemo(
     () =>
-      filtrados.map((p) => ({
-        id: p.id,
-        lat: p.lat,
-        lng: p.lng,
-        titulo: p.nome,
-        subtitulo: `${p.endereco} · ${p.bairro}, ${p.cidade}/${p.estado}`,
-      })),
-    [filtrados],
+      new Map<string, PinoMapa>(
+        pontos.map((p) => [
+          p.id,
+          {
+            id: p.id,
+            lat: p.lat,
+            lng: p.lng,
+            posicao: [p.lat, p.lng],
+            titulo: p.nome,
+            subtitulo: `${p.endereco} · ${p.bairro}, ${p.cidade}/${p.estado}`,
+          },
+        ]),
+      ),
+    [pontos],
   );
+  const pinos = useMemo(() => filtrados.map((p) => pinoPorId.get(p.id)!), [filtrados, pinoPorId]);
   const resultado = useMemo(
     () =>
       localizacao.estado === "ok"
@@ -63,7 +91,10 @@ export function BuscadorPontos({ pontos }: { pontos: Ponto[] }) {
     const novos = { ...filtros, ...parcial };
     setFiltros(novos);
     setLimite(POR_PAGINA);
-    if (selecionado && !filtrarPontos(pontos, novos).some((p) => p.id === selecionado)) setSelecionado(null);
+    // A loja não é afetada pelos filtros, então a seleção dela continua.
+    if (selecionado && selecionado !== PINO_LOJA.id && !filtrarPontos(pontos, novos).some((p) => p.id === selecionado)) {
+      setSelecionado(null);
+    }
   }
 
   function alternarTipo(tipo: TipoPonto) {
@@ -72,6 +103,7 @@ export function BuscadorPontos({ pontos }: { pontos: Ponto[] }) {
   }
 
   function pertoDeMim() {
+    if (localizacao.estado === "buscando") return; // já está procurando (o botão continua focável)
     if (localizacao.estado === "ok") {
       setLocalizacao({ estado: "inativo" });
       return;
@@ -81,19 +113,31 @@ export function BuscadorPontos({ pontos }: { pontos: Ponto[] }) {
       return;
     }
     setLocalizacao({ estado: "buscando" });
+    // O "timeout" do navegador não conta o tempo do pedido de permissão sem resposta,
+    // então a gente mesmo desiste depois de 10 segundos.
+    const terminar = (proxima: Localizacao) => {
+      clearTimeout(esperaLocalizacao.current ?? undefined);
+      setLocalizacao((atual) => (atual.estado === "buscando" ? proxima : atual));
+    };
+    esperaLocalizacao.current = setTimeout(() => terminar({ estado: "erro" }), ESPERA_LOCALIZACAO_MS);
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        setLocalizacao({ estado: "ok", coords: { lat: pos.coords.latitude, lng: pos.coords.longitude } });
+        terminar({ estado: "ok", coords: { lat: pos.coords.latitude, lng: pos.coords.longitude } });
         setLimite(POR_PAGINA);
       },
-      () => setLocalizacao({ estado: "erro" }),
-      { timeout: 10000, maximumAge: 5 * 60 * 1000 },
+      () => terminar({ estado: "erro" }),
+      { timeout: ESPERA_LOCALIZACAO_MS, maximumAge: 5 * 60 * 1000 },
     );
   }
 
+  /** "Ver no mapa": leva o mapa até o ponto (mesmo se for o mesmo de antes). No celular, abre a aba Mapa. */
   function verNoMapa(id: string) {
     setSelecionado(id);
-    if (window.matchMedia("(max-width: 959px)").matches) setAba("mapa");
+    setFoco((anterior) => ({ id, vez: (anterior?.vez ?? 0) + 1 }));
+    if (window.matchMedia("(max-width: 959px)").matches) {
+      setAba("mapa");
+      requestAnimationFrame(() => abasRef.current?.scrollIntoView({ block: "start" }));
+    }
   }
 
   /** Clique num pino: destaca o item e garante que ele está visível na lista. */
@@ -149,7 +193,7 @@ export function BuscadorPontos({ pontos }: { pontos: Ponto[] }) {
           className={`${styles.pertoDeMim} ${localizacao.estado === "ok" ? styles.pertoDeMimAtivo : ""}`}
           onClick={pertoDeMim}
           aria-pressed={localizacao.estado === "ok"}
-          disabled={localizacao.estado === "buscando"}
+          aria-disabled={localizacao.estado === "buscando"}
         >
           <IconLocate size={18} />
           {localizacao.estado === "buscando" ? "Procurando…" : "Perto de mim"}
@@ -184,11 +228,14 @@ export function BuscadorPontos({ pontos }: { pontos: Ponto[] }) {
           </button>
         )}
       </div>
-      <p className={styles.erroLocalizacao} aria-live="polite">
-        {localizacao.estado === "erro" && "Sem a localização, escolha sua cidade ou busque pelo bairro."}
-      </p>
+      {/* A região de aviso fica sempre na página, para o leitor de tela anunciar quando a mensagem aparecer. */}
+      <div aria-live="polite">
+        {localizacao.estado === "erro" && (
+          <p className={styles.erroLocalizacao}>Sem a localização, escolha sua cidade ou busque pelo bairro.</p>
+        )}
+      </div>
 
-      <div className={styles.abas} role="tablist" aria-label="Ver os pontos em">
+      <div ref={abasRef} className={styles.abas} role="tablist" aria-label="Ver os pontos em">
         <button type="button" role="tab" aria-selected={aba === "lista"} onClick={() => setAba("lista")}>
           <IconList size={18} />
           Lista
@@ -201,6 +248,11 @@ export function BuscadorPontos({ pontos }: { pontos: Ponto[] }) {
 
       <div className={styles.resultado} data-aba={aba}>
         <div className={styles.lista}>
+          <CardLojaDestaque
+            km={localizacao.estado === "ok" ? distanciaKm(localizacao.coords, loja.coordenadas) : undefined}
+            selecionado={selecionado === PINO_LOJA.id}
+            onVerNoMapa={() => verNoMapa(PINO_LOJA.id)}
+          />
           {n === 0 ? (
             <div className={styles.vazio}>
               <p>Não achamos um ponto com esses filtros.</p>
@@ -236,10 +288,10 @@ export function BuscadorPontos({ pontos }: { pontos: Ponto[] }) {
 
         <div className={styles.mapa}>
           <MapaDinamico
-            tipo="revenda"
-            rotulo="Mapa com os pontos de revenda"
+            rotulo="Mapa com a loja da Tatá e os pontos de revenda"
             pinos={pinos}
-            selecionado={selecionado}
+            loja={PINO_LOJA}
+            foco={foco}
             onSelecionar={selecionarDoMapa}
             voce={localizacao.estado === "ok" ? localizacao.coords : null}
           />
