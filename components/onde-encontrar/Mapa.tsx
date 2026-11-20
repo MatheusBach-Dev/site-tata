@@ -31,8 +31,10 @@ export type PinoMapa = {
 export type FocoMapa = { id: string; vez: number };
 
 export type PropsMapa = {
+  /** Pontos de revenda (agrupados em bolinhas quando estão perto) */
   pinos: PinoMapa[];
-  tipo: "loja" | "revenda";
+  /** A loja da Tatá: pino com a logo, sempre visível, por cima dos outros e fora das bolinhas */
+  loja?: PinoMapa;
   foco?: FocoMapa | null;
   onSelecionar?: (id: string) => void;
   voce?: Coordenada | null;
@@ -81,7 +83,17 @@ function pontosDaVisao(pinos: PinoMapa[], voce?: Coordenada | null): [number, nu
  * Se o mapa estiver escondido (aba "Lista" no celular), espera ele aparecer para ajustar,
  * a não ser que ele esteja aparecendo justamente para mostrar um pino pedido ("Ver no mapa").
  */
-function AjustarVisao({ pinos, voce, foco }: { pinos: PinoMapa[]; voce?: Coordenada | null; foco?: FocoMapa | null }) {
+function AjustarVisao({
+  pinos,
+  loja,
+  voce,
+  foco,
+}: {
+  pinos: PinoMapa[];
+  loja?: PinoMapa;
+  voce?: Coordenada | null;
+  foco?: FocoMapa | null;
+}) {
   const map = useMap();
   const temFoco = useRef(Boolean(foco));
   useEffect(() => {
@@ -92,7 +104,8 @@ function AjustarVisao({ pinos, voce, foco }: { pinos: PinoMapa[]; voce?: Coorden
     const ajustar = () => {
       const tamanho = map.getSize();
       if (tamanho.x === 0 || tamanho.y === 0) return false;
-      const pontos = pontosDaVisao(pinos, voce);
+      // A loja sempre entra na visão inicial (sem "Perto de mim"), junto com os pontos filtrados.
+      const pontos = pontosDaVisao(loja && !voce ? [loja, ...pinos] : pinos, voce);
       if (pontos.length === 1) map.setView(pontos[0], 16);
       else if (pontos.length > 1) map.fitBounds(L.latLngBounds(pontos), { padding: [40, 40], maxZoom: 15 });
       return true;
@@ -104,7 +117,7 @@ function AjustarVisao({ pinos, voce, foco }: { pinos: PinoMapa[]; voce?: Coorden
     });
     observador.observe(map.getContainer());
     return () => observador.disconnect();
-  }, [map, pinos, voce]);
+  }, [map, pinos, loja, voce]);
   return null;
 }
 
@@ -128,7 +141,7 @@ function FocarPino({
     // (se o pino ainda estiver dentro de uma) e 3) só então o balão abre.
     // Abrir o balão antes faria ele fechar sozinho quando o agrupamento redesenha os pinos.
     const mostrar = () => {
-      if (grupo.current) grupo.current.zoomToShowLayer(marcador, () => marcador.openPopup());
+      if (grupo.current?.hasLayer(marcador)) grupo.current.zoomToShowLayer(marcador, () => marcador.openPopup());
       else marcador.openPopup();
     };
     const destino = marcador.getLatLng();
@@ -143,60 +156,71 @@ function FocarPino({
   return null;
 }
 
-export default function Mapa({ pinos, tipo, foco, onSelecionar, voce, className, rotulo }: PropsMapa) {
+export default function Mapa({ pinos, loja, foco, onSelecionar, voce, className, rotulo }: PropsMapa) {
   const marcadores = useRef(new Map<string, L.Marker>());
   const grupo = useRef<L.MarkerClusterGroup | null>(null);
-  const centro: [number, number] = pinos.length ? pinos[0].posicao : CENTRO_PADRAO;
+  const centro: [number, number] = loja?.posicao ?? pinos[0]?.posicao ?? CENTRO_PADRAO;
 
-  const lista = pinos.map((p) => (
-    <Marker
-      key={p.id}
-      position={p.posicao}
-      icon={tipo === "loja" ? pinoLoja : pinoRevenda}
-      title={p.titulo}
-      ref={(m) => {
-        if (m) marcadores.current.set(p.id, m);
-        else marcadores.current.delete(p.id);
-      }}
-      eventHandlers={{ click: () => onSelecionar?.(p.id) }}
-    >
-      {tipo === "loja" && (
-        <Tooltip permanent direction="bottom" offset={[0, 4]} className={styles.etiquetaLoja}>
-          {p.titulo}
-        </Tooltip>
-      )}
-      <Popup>
-        <div className={styles.balao}>
-          <strong>{p.titulo}</strong>
-          <span>{p.subtitulo}</span>
-          <a href={linkComoChegar(p)} target="_blank" rel="noopener noreferrer">
-            Como chegar
-          </a>
-          <a href={linkVerNoMaps(p)} target="_blank" rel="noopener noreferrer">
-            Ver no Google Maps
-          </a>
-        </div>
-      </Popup>
-    </Marker>
-  ));
+  const balao = (p: PinoMapa) => (
+    <Popup>
+      <div className={styles.balao}>
+        <strong>{p.titulo}</strong>
+        <span>{p.subtitulo}</span>
+        <a href={linkComoChegar(p)} target="_blank" rel="noopener noreferrer">
+          Como chegar
+        </a>
+        <a href={linkVerNoMaps(p)} target="_blank" rel="noopener noreferrer">
+          Ver no Google Maps
+        </a>
+      </div>
+    </Popup>
+  );
 
   return (
     <div className={`${styles.regiao} ${className ?? ""}`} role="region" aria-label={rotulo}>
       <MapContainer center={centro} zoom={13} scrollWheelZoom={false} className={styles.mapa}>
         <TileLayer url={MAPA_BASE.url} attribution={MAPA_BASE.atribuicao} />
-        {tipo === "revenda" ? (
-          <MarkerClusterGroup ref={grupo} chunkedLoading showCoverageOnHover={false}>
-            {lista}
-          </MarkerClusterGroup>
-        ) : (
-          lista
+        <MarkerClusterGroup ref={grupo} chunkedLoading showCoverageOnHover={false}>
+          {pinos.map((p) => (
+            <Marker
+              key={p.id}
+              position={p.posicao}
+              icon={pinoRevenda}
+              title={p.titulo}
+              ref={(m) => {
+                if (m) marcadores.current.set(p.id, m);
+                else marcadores.current.delete(p.id);
+              }}
+              eventHandlers={{ click: () => onSelecionar?.(p.id) }}
+            >
+              {balao(p)}
+            </Marker>
+          ))}
+        </MarkerClusterGroup>
+        {loja && (
+          <Marker
+            position={loja.posicao}
+            icon={pinoLoja}
+            title={loja.titulo}
+            zIndexOffset={1000}
+            ref={(m) => {
+              if (m) marcadores.current.set(loja.id, m);
+              else marcadores.current.delete(loja.id);
+            }}
+            eventHandlers={{ click: () => onSelecionar?.(loja.id) }}
+          >
+            <Tooltip permanent direction="bottom" offset={[0, 4]} className={styles.etiquetaLoja}>
+              Loja da Tatá
+            </Tooltip>
+            {balao(loja)}
+          </Marker>
         )}
         {voce && (
           <CircleMarker center={[voce.lat, voce.lng]} radius={9} pathOptions={{ className: styles.voce }}>
             <Tooltip direction="top">Você está aqui</Tooltip>
           </CircleMarker>
         )}
-        <AjustarVisao pinos={pinos} voce={voce} foco={foco} />
+        <AjustarVisao pinos={pinos} loja={loja} voce={voce} foco={foco} />
         <FocarPino foco={foco} marcadores={marcadores} grupo={grupo} />
       </MapContainer>
     </div>

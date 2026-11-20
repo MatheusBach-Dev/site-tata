@@ -4,9 +4,11 @@
 // Feito para continuar simples com 10, 50 ou 200 pontos.
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { enderecoCompleto, loja } from "@/data/loja";
 import { tiposPonto, type Ponto, type TipoPonto } from "@/data/pontos";
 import {
   cidadesPorEstado,
+  distanciaKm,
   filtrarPontos,
   ordenarPorDistancia,
   tiposPresentes,
@@ -16,6 +18,7 @@ import {
 import { linkWhatsApp, mensagens } from "@/lib/whatsapp";
 import { Botao } from "../Botao";
 import { IconList, IconLocate, IconMap, IconSearch, IconWhatsApp } from "../icons";
+import { CardLojaDestaque } from "./CardLojaDestaque";
 import { IconeTipo } from "./IconeTipo";
 import { ItemPonto } from "./ItemPonto";
 import { MapaDinamico, type FocoMapa, type PinoMapa } from "./MapaDinamico";
@@ -24,6 +27,16 @@ import styles from "./BuscadorPontos.module.css";
 const POR_PAGINA = 12;
 /** Tempo máximo esperando a localização (inclui a pessoa não responder o pedido do navegador). */
 const ESPERA_LOCALIZACAO_MS = 10000;
+
+/** A loja da Tatá no mapa: pino com a logo, sempre visível e em destaque. */
+const PINO_LOJA: PinoMapa = {
+  id: "loja",
+  lat: loja.coordenadas.lat,
+  lng: loja.coordenadas.lng,
+  posicao: [loja.coordenadas.lat, loja.coordenadas.lng],
+  titulo: loja.nome,
+  subtitulo: enderecoCompleto,
+};
 const SEM_FILTROS: Filtros = { busca: "", cidade: "", tipos: [] };
 
 type Localizacao = { estado: "inativo" | "buscando" | "erro" } | { estado: "ok"; coords: Coordenada };
@@ -78,7 +91,10 @@ export function BuscadorPontos({ pontos }: { pontos: Ponto[] }) {
     const novos = { ...filtros, ...parcial };
     setFiltros(novos);
     setLimite(POR_PAGINA);
-    if (selecionado && !filtrarPontos(pontos, novos).some((p) => p.id === selecionado)) setSelecionado(null);
+    // A loja não é afetada pelos filtros, então a seleção dela continua.
+    if (selecionado && selecionado !== PINO_LOJA.id && !filtrarPontos(pontos, novos).some((p) => p.id === selecionado)) {
+      setSelecionado(null);
+    }
   }
 
   function alternarTipo(tipo: TipoPonto) {
@@ -232,6 +248,11 @@ export function BuscadorPontos({ pontos }: { pontos: Ponto[] }) {
 
       <div className={styles.resultado} data-aba={aba}>
         <div className={styles.lista}>
+          <CardLojaDestaque
+            km={localizacao.estado === "ok" ? distanciaKm(localizacao.coords, loja.coordenadas) : undefined}
+            selecionado={selecionado === PINO_LOJA.id}
+            onVerNoMapa={() => verNoMapa(PINO_LOJA.id)}
+          />
           {n === 0 ? (
             <div className={styles.vazio}>
               <p>Não achamos um ponto com esses filtros.</p>
@@ -267,9 +288,9 @@ export function BuscadorPontos({ pontos }: { pontos: Ponto[] }) {
 
         <div className={styles.mapa}>
           <MapaDinamico
-            tipo="revenda"
-            rotulo="Mapa com os pontos de revenda"
+            rotulo="Mapa com a loja da Tatá e os pontos de revenda"
             pinos={pinos}
+            loja={PINO_LOJA}
             foco={foco}
             onSelecionar={selecionarDoMapa}
             voce={localizacao.estado === "ok" ? localizacao.coords : null}

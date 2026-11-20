@@ -1,0 +1,110 @@
+.card {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 16px;
+  padding: 20px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--vinho) 0%, var(--vinho-escuro) 100%);
+  color: var(--branco);
+  box-shadow: var(--sombra);
+}
+/* Bolinha de decoração, como na chamada final do Início */
+.card::after {
+  content: "";
+  position: absolute;
+  right: -50px;
+  top: -60px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+}
+
+.selecionado {
+  outline: 3px solid var(--mostarda);
+  outline-offset: 3px;
+}
+
+.topo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.topo > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.selo {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--mostarda);
+  color: var(--vinho-escuro);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.nome {
+  margin-top: 4px;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--branco);
+}
+
+.distancia {
+  align-self: flex-start;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mostarda-claro);
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 14px 0 16px;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.88);
+}
+.infos li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.infos svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--mostarda);
+}
+
+.botoes {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.verNoMapa {
+  min-height: 42px;
+  padding: 0 18px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--branco);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.verNoMapa:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
