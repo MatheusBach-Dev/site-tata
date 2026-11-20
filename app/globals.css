@@ -1,33 +1,34 @@
 /*
-  Cores e fontes do site: a "paleta suave" aprovada na página do sabor do Figma
-  (mesmas cores da marca, mais neutras e um pouco mais escuras).
-  No Figma elas são a coleção de variáveis "Tatá • Paleta suave".
-  Para mudar uma cor no site inteiro, troque só o valor aqui.
+  Cores e fontes do site: a paleta ORIGINAL do quadro "🎨 Identidade Visual" do Figma
+  (Amarelo Tatá, Rosa Tatá, Vinho…). Os nomes das variáveis continuam os mesmos,
+  então para mudar uma cor no site inteiro basta trocar o valor aqui.
+  (A versão anterior, "paleta suave", está no histórico do git, no commit 637e59f.)
 */
 :root {
-  /* Paleta suave (nomes iguais aos do Figma) */
-  --fundo: #f7f2eb; /* fundo geral das páginas */
-  --areia: #efe5d8; /* painéis, caixas de destaque */
-  --branco: #fffdf9; /* header, cards, texto em botão colorido */
-  --linha: #e4d8ca; /* bordas e divisórias */
-  --vinho: #7a2e37; /* títulos, links, menu ativo */
-  --vinho-escuro: #4b1d23; /* nome da marca, rodapé */
-  --rosa: #b45a6a; /* detalhes: letra cursiva, marcadores, ícones */
-  --rosa-claro: #f2e2e0; /* fundo de selos */
-  --mostarda: #ddb55a; /* selos e destaques amarelos */
-  --mostarda-claro: #f4e9c9; /* fundo da etiqueta de preço */
-  --texto: #3a2a2c;
-  --texto-suave: #76666a;
-  --verde-zap: #23864f; /* botões do WhatsApp */
-  --ifood: #b8343a;
-  --n99food: #e9c24a;
+  /* Paleta da marca (quadro "Identidade Visual" do Figma) */
+  --fundo: #fff9ef; /* Creme: fundo do site */
+  --areia: #fde7ec; /* Rosa Claro: painéis e fundos suaves */
+  --branco: #ffffff; /* header, cards, texto em botão colorido */
+  --linha: #f8d7df; /* bordas e divisórias (Rosa Claro um pouco mais forte) */
+  --vinho: #a3161c; /* Vinho: títulos e embalagem */
+  --vinho-escuro: #6e0e14; /* Vinho Escuro: rodapé */
+  --rosa: #e8457c; /* Rosa Tatá: letras do logo, letra cursiva, detalhes */
+  --rosa-claro: #fde7ec; /* Rosa Claro: fundos suaves e selos */
+  --mostarda: #ffe347; /* Amarelo Tatá: fundo do logo, selos amarelos */
+  --mostarda-claro: #fff3c4; /* Amarelo Tatá clarinho: fundo da etiqueta de preço */
+  --texto: #3b1b20;
+  --texto-suave: #7a5a5f;
+  --verde-zap: #25d366; /* Verde WhatsApp: botões de pedido */
+  --ifood: #c90e2a;
+  --n99food: #eec53a;
 
   /* Tons de apoio (variações das cores acima) */
-  --rosa-escuro: #8e3f4e; /* hover e destaques um pouco mais fortes que o rosa */
-  --rosa-bem-claro: #f8efec;
-  --verde-zap-escuro: #1c6e41;
-  --amarelo: var(--mostarda); /* nome antigo, usado no logo e no rodapé */
-  --amarelo-ouro: #c99a3e;
+  --rosa-escuro: #c2185b; /* Rosa Escuro: destaques e hover */
+  --rosa-bem-claro: #fff2f5;
+  --verde-zap-escuro: #1ebe5a;
+  --amarelo: var(--mostarda); /* Amarelo Tatá (nome antigo, usado no logo e no rodapé) */
+  --amarelo-ouro: #ffb81c; /* Amarelo Ouro: fundos dos posts */
+  --laranja: #f59b14; /* Laranja: degradês */
   --amarelo-claro: var(--mostarda-claro);
   --creme: var(--fundo);
 
@@ -39,7 +40,7 @@
   --largura-conteudo: 1200px;
   --margem-lateral: 24px;
   --raio: 20px;
-  --sombra: 0 18px 40px -18px rgba(75, 29, 35, 0.3);
+  --sombra: 0 18px 40px -18px rgba(110, 14, 20, 0.3);
 }
 
 *,

@@ -31,7 +31,7 @@
   overflow: hidden;
   border-radius: 165px 165px 28px 28px;
   background: var(--areia);
-  box-shadow: 0 24px 48px -24px rgba(75, 29, 35, 0.45);
+  box-shadow: 0 24px 48px -24px rgba(110, 14, 20, 0.45);
 }
 .foto img {
   object-fit: cover;
@@ -68,7 +68,7 @@
   font-weight: 600;
   line-height: 1.15;
   text-align: center;
-  box-shadow: 0 12px 24px -12px rgba(75, 29, 35, 0.6);
+  box-shadow: 0 12px 24px -12px rgba(110, 14, 20, 0.6);
 }
 .anos strong {
   font-family: var(--fonte-titulo);

@@ -17,21 +17,21 @@
   height: 560px;
   left: -280px;
   top: 560px;
-  background: #dac558; /* cores das bolhas medidas no Figma */
+  background: rgba(255, 255, 255, 0.3); /* cores das bolhas medidas no Figma */
 }
 .bolha2 {
   width: 340px;
   height: 340px;
   right: -150px;
   top: -140px;
-  background: #c78717;
+  background: rgba(255, 255, 255, 0.22);
 }
 .bolha3 {
   width: 120px;
   height: 120px;
   left: 44%;
   top: 40px;
-  background: #b2902e;
+  background: rgba(255, 255, 255, 0.32);
 }
 
 .grade {
@@ -104,7 +104,7 @@
 }
 .numero {
   padding-right: 26px;
-  border-right: 1.5px solid rgba(122, 46, 55, 0.25);
+  border-right: 1.5px solid rgba(163, 22, 28, 0.25);
 }
 .numero:last-child {
   border-right: 0;
@@ -155,7 +155,7 @@
   aspect-ratio: 1;
   border-radius: 50%;
   border: 10px solid var(--branco);
-  box-shadow: 0 24px 50px -20px rgba(75, 29, 35, 0.45);
+  box-shadow: 0 24px 50px -20px rgba(110, 14, 20, 0.45);
 }
 
 .coracao {
@@ -197,7 +197,7 @@
   justify-content: center;
   border-radius: 50%;
   background: var(--vinho);
-  box-shadow: 0 14px 30px -12px rgba(75, 29, 35, 0.6);
+  box-shadow: 0 14px 30px -12px rgba(110, 14, 20, 0.6);
   color: var(--branco);
   transform: rotate(10deg);
   line-height: 1;

@@ -30,7 +30,7 @@
 }
 .pino svg {
   display: block;
-  filter: drop-shadow(0 4px 6px rgba(75, 29, 35, 0.35));
+  filter: drop-shadow(0 4px 6px rgba(110, 14, 20, 0.35));
 }
 
 .pinoLoja {
@@ -41,7 +41,7 @@
   border-radius: 50%;
   background: var(--mostarda);
   border: 3px solid var(--branco);
-  box-shadow: 0 0 0 2px var(--vinho), 0 8px 16px -6px rgba(75, 29, 35, 0.6);
+  box-shadow: 0 0 0 2px var(--vinho), 0 8px 16px -6px rgba(110, 14, 20, 0.6);
 }
 .pinoLoja img {
   border-radius: 50%;
@@ -98,7 +98,7 @@
 .regiao :global(.marker-cluster-small),
 .regiao :global(.marker-cluster-medium),
 .regiao :global(.marker-cluster-large) {
-  background-color: rgba(180, 90, 106, 0.35);
+  background-color: rgba(232, 69, 124, 0.35);
 }
 .regiao :global(.marker-cluster-small div),
 .regiao :global(.marker-cluster-medium div),

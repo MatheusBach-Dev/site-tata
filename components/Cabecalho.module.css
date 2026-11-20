@@ -3,7 +3,7 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 253, 249, 0.94); /* --branco, um pouco transparente */
+  background: rgba(255, 255, 255, 0.92); /* --branco, um pouco transparente */
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--linha);
 }

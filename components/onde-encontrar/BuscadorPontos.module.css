@@ -232,7 +232,7 @@
   .abas button[aria-selected="true"] {
     background: var(--branco);
     color: var(--vinho);
-    box-shadow: 0 2px 8px -4px rgba(75, 29, 35, 0.4);
+    box-shadow: 0 2px 8px -4px rgba(110, 14, 20, 0.4);
   }
 
   .resultado {
